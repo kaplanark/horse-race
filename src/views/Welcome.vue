@@ -22,7 +22,7 @@ const clickHandler = () => {
 	<div class="welcome">
 		<div class="welcome__content">
 			<Loader :status="isLoaderActive"></Loader>
-			<h1>Horse Racing</h1>
+			<h1>{{ $store.state.siteName }}</h1>
 			<Button name="Get Started" variant="primary" @click="clickHandler"></Button>
 		</div>
 		<div class="welcome__footer">
