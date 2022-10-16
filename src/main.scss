@@ -2,10 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap");
 
 :root {
+	--color-primary: #223354;
+	--color-secondary: #222226;
+
+	--font-primary: "Poppins", sans-serif;
+	--font-secondary: "Dancing Script", cursive;
+
 	--race-animation: paused;
 	--loader-animation: paused;
 
-	font-family: "Poppins", sans-serif;
+	font-family: var(--font-primary);
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
