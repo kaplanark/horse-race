@@ -1,17 +1,27 @@
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Button from '@components/Button/Button.vue';
+import Loader from '@components/Loader/Loader.vue';
 
 const router = useRouter();
 
+const isLoaderActive = ref(false);
+
 const clickHandler = () => {
-	router.push('/race-track');
+	isLoaderActive.value ? isLoaderActive.value = false : isLoaderActive.value = true;
+	setTimeout(() => {
+		isLoaderActive.value = false;
+		router.push('/race-track');
+	}, 3000);
+	return;
 };
 </script>
 
 <template>
 	<div class="welcome">
 		<div class="welcome__content">
+			<Loader :status="isLoaderActive"></Loader>
 			<h1>Horse Racing</h1>
 			<Button name="Get Started" variant="primary" @click="clickHandler"></Button>
 		</div>
