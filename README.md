@@ -1,1 +1,1 @@
-# horse-race
+# Horse Race
