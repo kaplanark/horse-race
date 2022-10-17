@@ -31,7 +31,7 @@ const props = defineProps({
 		width: 100%;
 		border-radius: 50%;
 		position: absolute;
-		border-top: 2px solid #222226;
+		border-top: 2px solid var(--color-tertiary);
 		animation: counterclockwise 2.5s linear infinite;
 		animation-play-state: var(--loader-animation);
 	}
@@ -42,7 +42,7 @@ const props = defineProps({
 		width: 100%;
 		border-radius: 50%;
 		position: absolute;
-		border-bottom: 2px solid #222226;
+		border-bottom: 2px solid var(--color-tertiary);
 		animation: clockwise 1.5s linear infinite;
 		animation-play-state: var(--loader-animation);
 	}

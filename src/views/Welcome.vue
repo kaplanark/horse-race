@@ -9,11 +9,11 @@ const router = useRouter();
 
 const isLoaderStatus = ref(false);
 
-const clickHandler = () => {
+const clickHandler = (routes) => {
 	isLoaderStatus.value ? isLoaderStatus.value = false : isLoaderStatus.value = true;
 	setTimeout(() => {
 		isLoaderStatus.value = false;
-		router.push('/race-track');
+		router.push(routes);
 	}, 3000);
 	return;
 };
@@ -24,7 +24,10 @@ const clickHandler = () => {
 		<div class="welcome__content">
 			<Loader :status="isLoaderStatus"></Loader>
 			<h1>{{ $store.state.siteName }}</h1>
-			<Button name="Get Started" variant="primary" @click="clickHandler"></Button>
+			<div class="btn-group">
+				<Button name="Get Started" variant="primary" @click="clickHandler('/race-track')"></Button>
+				<Button name="Presentation" variant="secondary" @click="clickHandler('/presentation')"></Button>
+			</div>
 		</div>
 		<div class="welcome__footer">
 			<a href="https://github.com/kaplanark" target="_blank">github/kaplanark</a>
@@ -57,7 +60,7 @@ const clickHandler = () => {
 		h1 {
 			font-size: 96px;
 			font-family: 'Dancing Script', cursive;
-			color: #223354;
+			color: var(--color-primary);
 		}
 	}
 
@@ -68,7 +71,7 @@ const clickHandler = () => {
 		align-items: center;
 
 		a {
-			color: #223354;
+			color: var(--color-primary);
 			text-decoration: none;
 			font-size: 12px;
 		}

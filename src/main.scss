@@ -3,7 +3,10 @@
 
 :root {
 	--color-primary: #223354;
-	--color-secondary: #222226;
+	--color-secondary: #444444;
+	--color-tertiary: #222226;
+	--color-white: #ffffff;
+	--color-black: #000000;
 
 	--font-primary: "Poppins", sans-serif;
 	--font-secondary: "Dancing Script", cursive;
@@ -26,6 +29,12 @@
 .img-fluid {
 	height: 100vh;
 	width: auto;
+}
+.btn-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
 }
 
 @keyframes counterclockwise {
