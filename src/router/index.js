@@ -12,6 +12,11 @@ const routes = [
 		component: () => import("@views/RaceTrack.vue"),
 	},
 	{
+		path: "/introduce",
+		name: "Introduce",
+		component: () => import("@views/Introduce.vue"),
+	},
+	{
 		path: "/:pathMatch(.*)*",
 		name: "NotFound",
 		component: () => import("@views/NotFound.vue"),
