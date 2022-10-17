@@ -9,11 +9,11 @@ const router = useRouter();
 
 const isLoaderStatus = ref(false);
 
-const clickHandler = (routes) => {
+const clickHandler = (route) => {
 	isLoaderStatus.value ? isLoaderStatus.value = false : isLoaderStatus.value = true;
 	setTimeout(() => {
 		isLoaderStatus.value = false;
-		router.push(routes);
+		router.push(route);
 	}, 3000);
 	return;
 };
