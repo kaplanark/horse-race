@@ -26,7 +26,7 @@ const clickHandler = (route) => {
 			<h1>{{ $store.state.siteName }}</h1>
 			<div class="btn-group">
 				<Button name="Get Started" variant="primary" @click="clickHandler('/race-track')"></Button>
-				<Button name="Presentation" variant="secondary" @click="clickHandler('/presentation')"></Button>
+				<Button name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></Button>
 			</div>
 		</div>
 		<div class="welcome__footer">
