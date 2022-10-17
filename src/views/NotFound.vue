@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
 	<div class="not-found">
 		<div class="not-found__content">
