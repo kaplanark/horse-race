@@ -31,24 +31,16 @@ const props = defineProps({
 		width: 100%;
 		border-radius: 50%;
 		position: absolute;
-		border-top: 2px solid var(--color-tertiary);
-		animation: counterclockwise 2.5s linear infinite;
-		animation-play-state: var(--loader-animation);
-	}
-
-	&::after {
-		content: '';
-		height: 100%;
-		width: 100%;
-		border-radius: 50%;
-		position: absolute;
-		border-bottom: 2px solid var(--color-tertiary);
-		animation: clockwise 1.5s linear infinite;
-		animation-play-state: var(--loader-animation);
+		border: solid transparent 2px;
+		transition: all 0.25s ease;
 	}
 
 	&--active {
-		--loader-animation: running;
+		&::before {
+			border-top: 2px solid var(--color-tertiary);
+			border-bottom: 2px solid var(--color-tertiary);
+			animation: clockwise 2.15s linear infinite;
+		}
 	}
 }
 </style>
