@@ -92,6 +92,5 @@ export const horse = {
 				run: false,
 			}
 		]
-
 	}
 }

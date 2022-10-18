@@ -4,15 +4,15 @@ import { useStore } from 'vuex';
 
 const store = useStore();
 
-const standings = computed(() => store.state.race.standings);
+const numbers = computed(() => store.state.race.sortingNumbers);
 const horses = computed(() => store.state.horse.horses);
 </script>
 
 <template>
 	<div class="table">
 		<div class="table__header">
-			<div class="table__header-item" v-for="standing in standings" :key="standing">
-				<span>{{ standing }}</span>
+			<div class="table__header-item" v-for="number in numbers" :key="number">
+				<span>{{ number }}</span>
 			</div>
 		</div>
 		<div class="table__body">
