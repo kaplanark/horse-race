@@ -72,17 +72,19 @@ const horses = computed(() => store.state.horse.horses);
 			&::before {
 				position: absolute;
 				content: attr(lane-no);
-				bottom: 0;
+				top: 50%;
 				left: 0;
-				height: 100%;
-				width: 40px;
-				color: var(--color-primary);
-				font-size: 32px;
+				transform: translateY(-50%);
+				height: 24px;
+				width: 24px;
+				color: var(--color-white);
+				font-size: 18px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				z-index: 2;
-				background-color: var(--color-white);
+				background-color: var(--color-primary);
+				border-radius: 50%;
 			}
 		}
 	}
