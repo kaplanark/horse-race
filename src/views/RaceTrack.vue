@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
-import Button from '../components/Button/Button.vue';
-import ScorTable from '../components/ScorTable.vue';
+import Button from '@components/Button/Button.vue';
+import ScorTable from '@components/ScorTable.vue';
 
 const store = useStore();
 
