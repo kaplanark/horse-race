@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap");
 
+@font-face {
+	font-family: Muybridge;
+	src: url(https://www.lorp.org/fonts/MuybridgeGX.woff2);
+}
+
 :root {
 	--color-primary: #223354;
 	--color-secondary: #444444;
@@ -45,5 +50,14 @@
 	to {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
+	}
+}
+
+@keyframes gallop {
+	from {
+		font-variation-settings: "TIME" 0;
+	}
+	to {
+		font-variation-settings: "TIME" 15;
 	}
 }

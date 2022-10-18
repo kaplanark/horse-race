@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
 	<div class="loader" :class="{ 'loader--active': props.status }">
 		<div class="loader__content">
-			<img src="@assets/images/horse.gif" alt="" width="100">
+			🐎
 		</div>
 	</div>
 </template>
@@ -24,23 +24,11 @@ const props = defineProps({
 	align-items: center;
 	justify-content: center;
 	position: relative;
-
-	&::before {
-		content: '';
-		height: 100%;
-		width: 100%;
-		border-radius: 50%;
-		position: absolute;
-		border: solid transparent 2px;
-		transition: all 0.25s ease;
-	}
+	font: 142px Muybridge;
+	color: var(--color-tertiary);
 
 	&--active {
-		&::before {
-			border-top: 2px solid var(--color-tertiary);
-			border-bottom: 2px solid var(--color-tertiary);
-			animation: clockwise 2.15s linear infinite;
-		}
+		animation: 1s linear infinite gallop;
 	}
 }
 </style>

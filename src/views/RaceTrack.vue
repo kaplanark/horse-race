@@ -1,0 +1,100 @@
+<script setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import Button from '../components/Button/Button.vue';
+
+const store = useStore();
+
+const horses = computed(() => store.state.horse.horses);
+</script>
+
+<template>
+	<div class="race-area">
+		<div class="race-area__header">
+
+		</div>
+		<div class="race-area__content">
+			<div class="lane" v-for="(horse,index) in horses" :key="horse.id" :lane-no="index + 1">
+				<div class="horse" :style="{'--color-horse':horse.color,'margin-left':horse.travelledDistance+'px'}"></div>
+			</div>
+		</div>
+		<div class="race-area__footer">
+			<Button name="Start Race" variant="primary" @click="startRace" />
+		</div>
+	</div>
+</template>
+
+<style lang="scss">
+.race-area {
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: 6fr 12fr 4fr;
+
+	&__header {
+		background-image: url('@assets/images/bg-mountain.png');
+		background-size: contain;
+		background-repeat: repeat;
+	}
+
+	&__content {
+		display: grid;
+		grid-template-rows: repeat(8, 1fr);
+
+		.lane {
+			// border-bottom: 1px solid rgb(243, 243, 243);
+			position: relative;
+			background-image: url('@assets/images/bg-lane.png');
+			background-size: contain;
+			background-position: bottom;
+			background-repeat: no-repeat;
+
+			.horse {
+				height: 100%;
+				width: 80px;
+				position: relative;
+				transition: all 0.75s ease-in-out;
+
+				&::before {
+					position: absolute;
+					content: '🐎';
+					right: 0;
+					top: 50%;
+					transform: translateY(-65%);
+					font: 72px Muybridge;
+					line-height: 1;
+					color: var(--color-horse);
+					animation: 1s linear infinite gallop;
+					z-index: 1;
+				}
+			}
+
+			&::before {
+				position: absolute;
+				content: attr(lane-no);
+				bottom: 0;
+				left: 0;
+				height: 100%;
+				width: 40px;
+				color: var(--color-primary);
+				// opacity: 0.5;
+				font-size: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 2;
+				background-color: var(--color-white);
+			}
+		}
+	}
+
+	&__footer {
+		padding: 24px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+}
+</style>
