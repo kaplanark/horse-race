@@ -60,7 +60,7 @@ export const horse = {
 			},
 			{
 				id: 6,
-				name: 'Blue',
+				name: 'Beige',
 				travelledDistance: 172,
 				speed: 0,
 				finish: false,

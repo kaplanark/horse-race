@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import Button from '../components/Button/Button.vue';
+import ScorTable from '../components/ScorTable.vue';
 
 const store = useStore();
 
@@ -10,9 +11,7 @@ const horses = computed(() => store.state.horse.horses);
 
 <template>
 	<div class="race-area">
-		<div class="race-area__header">
-
-		</div>
+		<div class="race-area__header"></div>
 		<div class="race-area__content">
 			<div class="lane" v-for="(horse,index) in horses" :key="horse.id" :lane-no="index + 1">
 				<div class="horse" :style="{'--color-horse':horse.color,'margin-left':horse.travelledDistance+'px'}"></div>
@@ -20,6 +19,7 @@ const horses = computed(() => store.state.horse.horses);
 		</div>
 		<div class="race-area__footer">
 			<Button name="Start Race" variant="primary" @click="startRace" />
+			<ScorTable></ScorTable>
 		</div>
 	</div>
 </template>
@@ -43,7 +43,6 @@ const horses = computed(() => store.state.horse.horses);
 		grid-template-rows: repeat(8, 1fr);
 
 		.lane {
-			// border-bottom: 1px solid rgb(243, 243, 243);
 			position: relative;
 			background-image: url('@assets/images/bg-lane.png');
 			background-size: contain;
@@ -78,7 +77,6 @@ const horses = computed(() => store.state.horse.horses);
 				height: 100%;
 				width: 40px;
 				color: var(--color-primary);
-				// opacity: 0.5;
 				font-size: 32px;
 				display: flex;
 				align-items: center;
@@ -92,7 +90,7 @@ const horses = computed(() => store.state.horse.horses);
 	&__footer {
 		padding: 24px;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
 		align-items: center;
 	}
 

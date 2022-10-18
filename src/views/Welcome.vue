@@ -44,7 +44,7 @@ const clickHandler = (route) => {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	background-image: url('@assets/images/mountain.png');
+	background-image: url('@assets/images/bg-mountain.png');
 	background-repeat: no-repeat;
 	background-position: top;
 	background-size: contain;
