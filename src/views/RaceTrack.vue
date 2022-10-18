@@ -73,7 +73,7 @@ const horses = computed(() => store.state.horse.horses);
 				position: absolute;
 				content: attr(lane-no);
 				top: 50%;
-				left: 0;
+				left: 2px;
 				transform: translateY(-50%);
 				height: 24px;
 				width: 24px;
