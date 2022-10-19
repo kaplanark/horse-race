@@ -8,11 +8,15 @@ const props = defineProps({
 		type: String,
 		default: 'primary'
 	},
+	disabled: {
+		type: Boolean,
+		default: false
+	}
 });
 </script>
 
 <template>
-	<button :class="`btn btn--${props.variant}`">
+	<button :class="`btn btn--${props.variant}`" :disabled="props.disabled">
 		{{ props.name }}
 	</button>
 </template>

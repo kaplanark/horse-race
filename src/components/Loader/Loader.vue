@@ -9,9 +9,7 @@ const props = defineProps({
 
 <template>
 	<div class="loader" :class="{ 'loader--active': props.status }">
-		<div class="loader__content">
-			🐎
-		</div>
+		<div class="loader__content">🐎</div>
 	</div>
 </template>
 

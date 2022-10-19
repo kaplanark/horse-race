@@ -1,11 +1,19 @@
 <script setup>
-import { computed } from 'vue';
+import { watchEffect, ref, computed } from 'vue'
 import { useStore } from 'vuex';
-
 const store = useStore();
 
+const horses = ref([]);
+
+const compareFunction = (a, b) => {
+	return (b.travelledDistance / b.scoreTime) - (a.travelledDistance / a.scoreTime);
+}
+
 const numbers = computed(() => store.state.race.sortingNumbers);
-const horses = computed(() => store.state.horse.horses);
+
+watchEffect(() => {
+	horses.value = [...store.state.race.horses].sort((a, b) => compareFunction(a, b));
+});
 </script>
 
 <template>
@@ -17,7 +25,7 @@ const horses = computed(() => store.state.horse.horses);
 		</div>
 		<div class="table__body">
 			<div class="table__body-cell" v-for="horse in horses" :key="horse.id">
-				<span v-if="horse.score === 0">-------</span>
+				<span v-if="horse.score != 0">-------</span>
 				<span v-else :style="{'color':horse.color}">{{ horse.name }}</span>
 			</div>
 		</div>

@@ -1,7 +1,6 @@
 import { createStore } from 'vuex';
 
 import { race } from './modules/race';
-import { horse } from './modules/horse';
 
 const store = createStore({
 	state() {
@@ -16,8 +15,7 @@ const store = createStore({
 		}
 	},
 	modules: {
-		race,
-		horse,
+		race
 	}
 });
 

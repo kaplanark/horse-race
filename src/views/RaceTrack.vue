@@ -1,25 +1,36 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
+
 import Button from '@components/Button/Button.vue';
 import ScorTable from '@components/ScorTable.vue';
+import Lane from '@components/Lane.vue';
+import Countdown from '../components/Countdown.vue';
 
 const store = useStore();
 
-const horses = computed(() => store.state.horse.horses);
+const startRace = () => {
+	store.dispatch('startRace');
+};
+
+const isDisabled = computed(() => store.state.race.start);
+const horses = computed(() => store.state.race.horses);
 </script>
 
 <template>
 	<div class="race-area">
 		<div class="race-area__header"></div>
 		<div class="race-area__content">
-			<div class="lane" v-for="(horse,index) in horses" :key="horse.id" :lane-no="index + 1">
-				<div class="horse" :style="{'--color-horse':horse.color,'margin-left':horse.travelledDistance+'px'}"></div>
-			</div>
+			<template v-for="(horse,index) in horses" :key="horse.id">
+				<Lane :horse="horse" :lane-no="index + 1" />
+			</template>
 		</div>
 		<div class="race-area__footer">
-			<Button name="Start Race" variant="primary" @click="startRace" />
+			<Button name="Start Race" variant="primary" :disasbled="isDisabled" @click="startRace" />
 			<ScorTable></ScorTable>
+			<Teleport to="body">
+				<Countdown></Countdown>
+			</Teleport>
 		</div>
 	</div>
 </template>
@@ -41,52 +52,6 @@ const horses = computed(() => store.state.horse.horses);
 	&__content {
 		display: grid;
 		grid-template-rows: repeat(8, 1fr);
-
-		.lane {
-			position: relative;
-			background-image: url('@assets/images/bg-lane.png');
-			background-size: contain;
-			background-position: bottom;
-			background-repeat: no-repeat;
-
-			.horse {
-				height: 100%;
-				width: 80px;
-				position: relative;
-				transition: all 0.75s ease-in-out;
-
-				&::before {
-					position: absolute;
-					content: '🐎';
-					right: 0;
-					top: 50%;
-					transform: translateY(-65%);
-					font: 72px Muybridge;
-					line-height: 1;
-					color: var(--color-horse);
-					animation: 1s linear infinite gallop;
-					z-index: 1;
-				}
-			}
-
-			&::before {
-				position: absolute;
-				content: attr(lane-no);
-				top: 50%;
-				left: 2px;
-				transform: translateY(-50%);
-				height: 24px;
-				width: 24px;
-				color: var(--color-white);
-				font-size: 18px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 2;
-				background-color: var(--color-primary);
-				border-radius: 50%;
-			}
-		}
 	}
 
 	&__footer {
@@ -95,6 +60,5 @@ const horses = computed(() => store.state.horse.horses);
 		justify-content: space-between;
 		align-items: center;
 	}
-
 }
 </style>
