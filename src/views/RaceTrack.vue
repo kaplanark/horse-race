@@ -12,7 +12,7 @@ const store = useStore();
 
 const isCountdown = ref(false);
 
-const startRace = () => {
+const startHandler = () => {
 	isCountdown.value = true;
 	store.dispatch('startRace');
 	setTimeout(() => {
@@ -33,7 +33,7 @@ const horses = computed(() => store.state.race.horses);
 			</template>
 		</div>
 		<div class="race-area__footer">
-			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startRace" />
+			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler" />
 			<ScoreList></ScoreList>
 			<Teleport to="body">
 				<Countdown v-model:show="isCountdown"></Countdown>

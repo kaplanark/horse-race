@@ -92,6 +92,9 @@ export const race = {
 		getHorses(state) {
 			return state.horses;
 		},
+		getRaceStatus(state) {
+			return state.raceStatus;
+		}
 	},
 	mutations: {
 		setLaneLength(state, length) {
@@ -99,6 +102,15 @@ export const race = {
 		},
 		setRaceStatus(state, status) {
 			state.raceStatus = status;
+		},
+		setResetRace(state) {
+			state.horses.map(horse => {
+				horse.travelledDistance = 0;
+				horse.speed = 0;
+				horse.finish = false;
+				horse.scoreTime = 0;
+				horse.run = false;
+			});
 		}
 	},
 	actions: {
@@ -133,14 +145,8 @@ export const race = {
 			}, 100);
 		},
 		async resetRace(context) {
-			context.commit('setRaceStatus', 'ready');
-			await context.state.horses.map(horse => {
-				horse.travelledDistance = 0;
-				horse.speed = 0;
-				horse.finish = false;
-				horse.scoreTime = 0;
-				horse.run = false;
-			});
+			await context.commit('setRaceStatus', 'ready');
+			await context.commit('setResetRace');
 		}
 	}
 };
