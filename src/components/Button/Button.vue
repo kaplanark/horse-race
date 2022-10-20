@@ -31,6 +31,19 @@ const props = defineProps({
 	font-size: inherit;
 	font-family: inherit;
 
+	&:disabled {
+		cursor: default;
+		opacity: 0.5;
+
+		&:hover {
+			color: var(--color-primary);
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+
 	&--primary {
 		color: var(--color-primary);
 		padding: 8px 16px;

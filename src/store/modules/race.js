@@ -2,7 +2,7 @@ export const race = {
 	namespace: true,
 	state() {
 		return {
-			start: false,
+			raceStatus: 'ready', // ready, running, finished
 			sortingNumbers: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th'],
 			laneLength: 0,
 			horses: [
@@ -101,13 +101,13 @@ export const race = {
 		setLaneLength(state, length) {
 			state.laneLength = length + 80;
 		},
-		setRaceStart(state, start) {
-			state.start = start;
+		setRaceStatus(state, status) {
+			state.raceStatus = status;
 		}
 	},
 	actions: {
 		startRace(context) {
-			// context.commit('setRaceStart', true);
+			context.commit('setRaceStatus', 'running');
 			setInterval(() => {
 				context.state.horses.map(horse => {
 					horse.speed = Math.floor(Math.random() * (40 - 20) + 20);

@@ -68,5 +68,18 @@ const props = defineProps({
 		background-color: var(--color-primary);
 		border-radius: 50%;
 	}
+
+	&::after {
+		position: absolute;
+		content: '';
+		top: 50%;
+		right: 0;
+		height: 70%;
+		width: 80px;
+		transform: translateY(-50%);
+		z-index: 0;
+		border-left: 1px dashed var(--color-primary);
+		opacity: 0.5;
+	}
 }
 </style>

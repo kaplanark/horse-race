@@ -1,23 +1,14 @@
 <script setup>
-const props = defineProps({
-	show: {
-		type: Boolean,
-		default: false
-	},
-	closable: {
-		type: Boolean,
-		default: true
-	},
-});
-const emit = defineEmits(['update:show']);
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
-const closeHandler = () => {
-	props.closable && emit('update:show', false);
-};
+const store = useStore();
+
+const show = computed(() => store.state.race.raceStatus === 'finished');
 </script>
 
 <template>
-	<div class="modal" v-if="props.show">
+	<div class="modal" v-if="show">
 		<div class="modal__overlay" @click="closeHandler"></div>
 		<div class="modal__content">
 			<div class="modal__content-header">

@@ -5,15 +5,22 @@ import { useStore } from 'vuex';
 import Button from '@components/Button/Button.vue';
 import ScorTable from '@components/ScorTable.vue';
 import Lane from '@components/Lane.vue';
-import Countdown from '../components/Countdown.vue';
+import Countdown from '@components/Countdown.vue';
+import ResultModal from '@components/Modal/ResultModal.vue';
 
 const store = useStore();
 
+const isCountdown = ref(false);
+
 const startRace = () => {
+	isCountdown.value = true;
 	store.dispatch('startRace');
+	setTimeout(() => {
+		isCountdown.value = false;
+	}, 3000);
 };
 
-const isDisabled = computed(() => store.state.race.start);
+const isDisabled = computed(() => store.state.race.raceStatus === 'running');
 const horses = computed(() => store.state.race.horses);
 </script>
 
@@ -26,10 +33,11 @@ const horses = computed(() => store.state.race.horses);
 			</template>
 		</div>
 		<div class="race-area__footer">
-			<Button name="Start Race" variant="primary" :disasbled="isDisabled" @click="startRace" />
+			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startRace" />
 			<ScorTable></ScorTable>
 			<Teleport to="body">
-				<Countdown></Countdown>
+				<Countdown v-model:show="isCountdown"></Countdown>
+				<ResultModal></ResultModal>
 			</Teleport>
 		</div>
 	</div>

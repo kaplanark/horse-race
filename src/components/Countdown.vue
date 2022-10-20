@@ -1,17 +1,18 @@
 <script setup>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-const store = useStore();
-
-const show = computed(() => store.state.race.start);
+const props = defineProps({
+	show: {
+		type: Boolean,
+		default: false,
+	},
+});
+const emit = defineEmits(['update:show']);
 </script>
 
 <template>
-	<div class="countdown" v-if="show">
+	<div class="countdown" v-if="props.show">
 		<div class="countdown__overlay"></div>
 		<div class="countdown__content">
-
+			<img src="@assets/images/countdown.gif" alt="">
 		</div>
 	</div>
 </template>
@@ -39,6 +40,11 @@ const show = computed(() => store.state.race.start);
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		overflow: hidden;
 	}
 }
 </style>
