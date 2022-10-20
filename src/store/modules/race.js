@@ -3,7 +3,6 @@ export const race = {
 	state() {
 		return {
 			raceStatus: 'ready', // ready, running, finished
-			sortingNumbers: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th'],
 			laneLength: 0,
 			horses: [
 				{
@@ -118,13 +117,24 @@ export const race = {
 				context.state.horses.map(horse => {
 					if (horse.travelledDistance < context.state.laneLength) {
 						horse.scoreTime++;
-						horse.travelledDistance += horse.speed / 3;
+						horse.travelledDistance += horse.speed / 4;
 					} else {
 						horse.finish = true;
 						horse.run = false;
 					}
 				});
 			}, 100);
+		},
+		async resetRace(context) {
+			context.commit('setRaceStatus', 'ready');
+			await context.state.horses.map(horse => {
+				horse.travelledDistance = 0;
+				horse.speed = 0;
+				horse.finish = false;
+				horse.score = 0;
+				horse.scoreTime = 0;
+				horse.run = false;
+			});
 		}
 	}
 };

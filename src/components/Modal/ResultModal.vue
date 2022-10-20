@@ -1,8 +1,19 @@
 <script setup>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import Button from '@components/Button/Button.vue';
 
 const store = useStore();
+
+const closeHandler = () => {
+	store.dispatch('resetRace');
+};
+const restartHandler = () => {
+	store.dispatch('resetRace')
+		.then(() => {
+			store.dispatch('startRace');
+		});
+};
 
 const show = computed(() => store.state.race.raceStatus === 'finished');
 </script>
@@ -18,7 +29,10 @@ const show = computed(() => store.state.race.raceStatus === 'finished');
 				<slot name="body"></slot>
 			</div>
 			<div class="modal__content-footer">
-				<slot name="footer"></slot>
+				<div class="btn-group">
+					<Button name="Close" variant="secondary" @click="closeHandler" />
+					<Button name="Restart Race" variant="primary" @click="restartHandler" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -45,13 +59,14 @@ const show = computed(() => store.state.race.raceStatus === 'finished');
 	&__content {
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: calc(50% - 16px);
 		transform: translate(-50%, -50%);
 		background-color: var(--color-white);
 		border-radius: 4px;
 		padding: 16px;
 		max-width: 800px;
-		width: 100%;
+		margin: 0 16px;
+		width: calc(100% - 32px);
 
 		&-header {
 			padding: 16px;

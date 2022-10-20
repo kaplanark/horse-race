@@ -6,12 +6,7 @@ const store = createStore({
 	state() {
 		return {
 			siteName: 'Horse Racing',
-			screenWidth: 0,
-		}
-	},
-	mutations: {
-		setScreenWidth(state, width) {
-			state.screenWidth = width;
+			sortingNumbers: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th'],
 		}
 	},
 	modules: {
