@@ -3,6 +3,7 @@ export const race = {
 	state() {
 		return {
 			raceStatus: 'ready', // ready, running, finished
+			countdown: false,
 			laneLength: 0,
 			horses: [
 				{
@@ -94,16 +95,25 @@ export const race = {
 		},
 		getRaceStatus(state) {
 			return state.raceStatus;
+		},
+		getCountdown(state) {
+			return state.countdown;
 		}
 	},
 	mutations: {
-		setLaneLength(state, length) {
+		SET_LANE_LENGTH(state, length) {
 			state.laneLength = length;
 		},
-		setRaceStatus(state, status) {
+		SET_RACE_STATUS(state, status) {
 			state.raceStatus = status;
 		},
-		setResetRace(state) {
+		SET_COUNTDOWN(state, value) {
+			state.countdown = value;
+			setTimeout(() => {
+				state.countdown = false;
+			}, 3000);
+		},
+		SET_RESET_RACE(state) {
 			state.horses.map(horse => {
 				horse.travelledDistance = 0;
 				horse.speed = 0;
@@ -114,39 +124,10 @@ export const race = {
 		}
 	},
 	actions: {
-		startRace(context) {
-			context.commit('setRaceStatus', 'running');
-			const rngInterval = setInterval(() => {
-				context.state.horses.map(horse => {
-					horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
-
-					if (!horse.finish) horse.run = true;
-				});
-				const allFinished = context.state.horses.every(horse => horse.finish);
-
-				if (allFinished) clearInterval(rngInterval);
-			}, 3000);
-
-			const wayInterval = setInterval(() => {
-				context.state.horses.map(horse => {
-					if (horse.travelledDistance < context.state.laneLength) {
-						horse.scoreTime++;
-						horse.travelledDistance += horse.speed / 4;
-					} else {
-						horse.finish = true;
-						horse.run = false;
-					}
-				});
-				const allFinished = context.state.horses.every(horse => horse.finish);
-				if (allFinished) {
-					context.commit('setRaceStatus', 'finished');
-					clearInterval(wayInterval);
-				}
-			}, 100);
-		},
 		async resetRace(context) {
-			await context.commit('setRaceStatus', 'ready');
-			await context.commit('setResetRace');
+			await context.commit('SET_RACE_STATUS', 'ready');
+			await context.commit('SET_RESET_RACE');
+			await context.commit('SET_COUNTDOWN', false);
 		}
 	}
 };

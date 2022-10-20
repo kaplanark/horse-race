@@ -1,15 +1,14 @@
 <script setup>
-const props = defineProps({
-	show: {
-		type: Boolean,
-		default: false,
-	},
-});
-const emit = defineEmits(['update:show']);
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore();
+
+const show = computed(() => store.getters.getCountdown);
 </script>
 
 <template>
-	<div class="countdown" v-if="props.show">
+	<div class="countdown" v-if="show">
 		<div class="countdown__overlay"></div>
 		<div class="countdown__content">
 			<img src="@assets/images/countdown.gif" alt="">

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 import Button from '@components/Button/Button.vue';
@@ -10,14 +10,35 @@ import ResultModal from '@components/Modal/ResultModal.vue';
 
 const store = useStore();
 
-const isCountdown = ref(false);
-
 const startHandler = () => {
-	isCountdown.value = true;
-	store.dispatch('startRace');
-	setTimeout(() => {
-		isCountdown.value = false;
+	store.commit('SET_RACE_STATUS', 'running');
+	store.commit('SET_COUNTDOWN', true);
+	const rngInterval = setInterval(() => {
+		store.state.race.horses.map(horse => {
+			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
+			if (!horse.finish) horse.run = true;
+		});
+		const allFinished = store.state.race.horses.every(horse => horse.finish);
+
+		if (allFinished) clearInterval(rngInterval);
 	}, 3000);
+
+	const wayInterval = setInterval(() => {
+		store.state.race.horses.map(horse => {
+			if (horse.travelledDistance < store.state.race.laneLength) {
+				horse.scoreTime++;
+				horse.travelledDistance += horse.speed / 4;
+			} else {
+				horse.finish = true;
+				horse.run = false;
+			}
+		});
+		const allFinished = store.state.race.horses.every(horse => horse.finish);
+		if (allFinished) {
+			store.commit('SET_RACE_STATUS', 'finished');
+			clearInterval(wayInterval);
+		}
+	}, 100);
 };
 
 const isDisabled = computed(() => store.state.race.raceStatus === 'running');
@@ -29,15 +50,15 @@ const horses = computed(() => store.state.race.horses);
 		<div class="race-area__header"></div>
 		<div class="race-area__content">
 			<template v-for="horse in horses" :key="horse.lane">
-				<Lane :horse="horse" :lane-no="horse.lane" />
+				<Lane :horse="horse" :lane-no="horse.lane"></Lane>
 			</template>
 		</div>
 		<div class="race-area__footer">
-			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler" />
+			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler"></Button>
 			<ScoreList></ScoreList>
 			<Teleport to="body">
-				<Countdown v-model:show="isCountdown"></Countdown>
-				<ResultModal></ResultModal>
+				<Countdown></Countdown>
+				<ResultModal @start="startHandler"></ResultModal>
 			</Teleport>
 		</div>
 	</div>

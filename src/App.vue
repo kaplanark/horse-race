@@ -6,7 +6,7 @@ const store = useStore();
 
 onBeforeMount(() => {
 	var screenWidth = window.innerWidth - 80;
-	store.commit('setLaneLength', screenWidth);
+	store.commit('SET_LANE_LENGTH', screenWidth);
 });
 </script>
 

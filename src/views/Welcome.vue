@@ -14,7 +14,7 @@ const clickHandler = (route) => {
 	setTimeout(() => {
 		isLoaderStatus.value = false;
 		router.push(route);
-	}, 1500);
+	}, 2000);
 	return;
 };
 </script>

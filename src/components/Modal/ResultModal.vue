@@ -5,18 +5,16 @@ import Button from '@components/Button/Button.vue';
 import ScoreTable from '@components/ScoreTable.vue';
 
 const store = useStore();
+const emit = defineEmits(['start']);
 
-const closeHandler = () => {
-	store.dispatch('resetRace');
-};
 const restartHandler = () => {
 	store.dispatch('resetRace')
 		.then(() => {
-			store.dispatch('startRace');
+			emit('start');
 		});
 };
 
-const show = computed(() => store.state.race.raceStatus === 'finished');
+const show = computed(() => store.getters.getRaceStatus === 'finished');
 </script>
 
 <template>
@@ -25,12 +23,11 @@ const show = computed(() => store.state.race.raceStatus === 'finished');
 		<div class="modal__content">
 			<div class="modal__content-header">Race Results</div>
 			<div class="modal__content-body">
-				<ScoreTable />
+				<ScoreTable></ScoreTable>
 			</div>
 			<div class="modal__content-footer">
 				<div class="btn-group">
-					<Button name="Close" variant="secondary" @click="closeHandler" />
-					<Button name="Restart Race" variant="primary" @click="restartHandler" />
+					<Button name="Restart Race" variant="primary" @click="restartHandler"></Button>
 				</div>
 			</div>
 		</div>
