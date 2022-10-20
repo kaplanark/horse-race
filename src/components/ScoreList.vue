@@ -1,30 +1,29 @@
 <script setup>
 import { watchEffect, ref, computed } from 'vue'
 import { useStore } from 'vuex';
+import compareFunction from '@utils/compareFunction';
 const store = useStore();
 
 const horses = ref([]);
 
-const compareFunction = (a, b) => {
-	return (b.travelledDistance / b.scoreTime) - (a.travelledDistance / a.scoreTime);
-}
-
-const numbers = computed(() => store.state.sortingNumbers);
+const sortingNumbers = computed(() => store.state.sortingNumbers);
 
 watchEffect(() => {
-	horses.value = [...store.state.race.horses].sort((a, b) => compareFunction(a, b));
+	const data = store.getters.getHorses;
+	let sortedData = [...data].sort((a, b) => compareFunction(a, b));
+	horses.value = sortedData;
 });
 </script>
 
 <template>
-	<div class="table">
-		<div class="table__header">
-			<div class="table__header-item" v-for="number in numbers" :key="number">
+	<div class="list">
+		<div class="list__header">
+			<div class="list__header-item" v-for="number in sortingNumbers" :key="number">
 				<span>{{ number }}</span>
 			</div>
 		</div>
-		<div class="table__body">
-			<div class="table__body-cell" v-for="horse in horses" :key="horse.id">
+		<div class="list__body">
+			<div class="list__body-cell" v-for="horse in horses" :key="horse.lane">
 				<span v-if="horse.travelledDistance === 0">------</span>
 				<span v-else :style="{'color':horse.color}">{{ horse.name }}</span>
 			</div>
@@ -33,7 +32,7 @@ watchEffect(() => {
 </template>
 
 <style lang="scss">
-.table {
+.list {
 	display: flex;
 	flex-direction: column;
 	padding: 0 8px;

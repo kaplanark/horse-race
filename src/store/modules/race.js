@@ -6,89 +6,81 @@ export const race = {
 			laneLength: 0,
 			horses: [
 				{
-					id: 1,
+					lane: 1,
 					name: 'Tucker',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#3b302f',
 					run: false,
 				},
 				{
-					id: 2,
+					lane: 2,
 					name: 'Dakota',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#a97452',
 					run: false,
 				},
 				{
-					id: 3,
+					lane: 3,
 					name: 'Cash',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#613f24',
 					run: false,
 				},
 				{
-					id: 4,
+					lane: 4,
 					name: 'Cisco',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#c9b89f',
 					run: false,
 				},
 				{
-					id: 5,
+					lane: 5,
 					name: 'Whiskey',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#b6b6b6',
 					run: false,
 				},
 				{
-					id: 6,
+					lane: 6,
 					name: 'Beige',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#d09761',
 					run: false,
 				},
 				{
-					id: 7,
+					lane: 7,
 					name: 'Molly',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#cc784c',
 					run: false,
 				},
 				{
-					id: 8,
+					lane: 8,
 					name: 'Ranger',
 					travelledDistance: 0,
 					speed: 0,
 					finish: false,
-					score: 0,
 					scoreTime: 0,
 					color: '#826256',
 					run: false,
@@ -96,9 +88,14 @@ export const race = {
 			]
 		}
 	},
+	getters: {
+		getHorses(state) {
+			return state.horses;
+		},
+	},
 	mutations: {
 		setLaneLength(state, length) {
-			state.laneLength = length + 80;
+			state.laneLength = length;
 		},
 		setRaceStatus(state, status) {
 			state.raceStatus = status;
@@ -107,13 +104,18 @@ export const race = {
 	actions: {
 		startRace(context) {
 			context.commit('setRaceStatus', 'running');
-			setInterval(() => {
+			const rngInterval = setInterval(() => {
 				context.state.horses.map(horse => {
 					horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
-					horse.run = true;
+
+					if (!horse.finish) horse.run = true;
 				});
+				const allFinished = context.state.horses.every(horse => horse.finish);
+
+				if (allFinished) clearInterval(rngInterval);
 			}, 3000);
-			setInterval(() => {
+
+			const wayInterval = setInterval(() => {
 				context.state.horses.map(horse => {
 					if (horse.travelledDistance < context.state.laneLength) {
 						horse.scoreTime++;
@@ -123,6 +125,11 @@ export const race = {
 						horse.run = false;
 					}
 				});
+				const allFinished = context.state.horses.every(horse => horse.finish);
+				if (allFinished) {
+					context.commit('setRaceStatus', 'finished');
+					clearInterval(wayInterval);
+				}
 			}, 100);
 		},
 		async resetRace(context) {
@@ -131,7 +138,6 @@ export const race = {
 				horse.travelledDistance = 0;
 				horse.speed = 0;
 				horse.finish = false;
-				horse.score = 0;
 				horse.scoreTime = 0;
 				horse.run = false;
 			});

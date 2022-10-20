@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import Button from '@components/Button/Button.vue';
+import ScoreTable from '@components/ScoreTable.vue';
 
 const store = useStore();
 
@@ -20,13 +21,11 @@ const show = computed(() => store.state.race.raceStatus === 'finished');
 
 <template>
 	<div class="modal" v-if="show">
-		<div class="modal__overlay" @click="closeHandler"></div>
+		<div class="modal__overlay"></div>
 		<div class="modal__content">
-			<div class="modal__content-header">
-				<slot name="header"></slot>
-			</div>
+			<div class="modal__content-header">Race Results</div>
 			<div class="modal__content-body">
-				<slot name="body"></slot>
+				<ScoreTable />
 			</div>
 			<div class="modal__content-footer">
 				<div class="btn-group">
@@ -53,7 +52,7 @@ const show = computed(() => store.state.race.raceStatus === 'finished');
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0.689);
 	}
 
 	&__content {
@@ -70,7 +69,9 @@ const show = computed(() => store.state.race.raceStatus === 'finished');
 
 		&-header {
 			padding: 16px;
-			border-bottom: 1px solid var(--color-tertiary);
+			text-align: center;
+			font-family: var(--font-secondary);
+			font-size: 42px;
 		}
 
 		&-body {
@@ -79,7 +80,6 @@ const show = computed(() => store.state.race.raceStatus === 'finished');
 
 		&-footer {
 			padding: 16px;
-			border-top: 1px solid var(--color-tertiary);
 		}
 	}
 }

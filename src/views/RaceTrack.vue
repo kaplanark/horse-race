@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 
 import Button from '@components/Button/Button.vue';
-import ScorTable from '@components/ScorTable.vue';
+import ScoreList from '@components/ScoreList.vue';
 import Lane from '@components/Lane.vue';
 import Countdown from '@components/Countdown.vue';
 import ResultModal from '@components/Modal/ResultModal.vue';
@@ -28,13 +28,13 @@ const horses = computed(() => store.state.race.horses);
 	<div class="race-area">
 		<div class="race-area__header"></div>
 		<div class="race-area__content">
-			<template v-for="(horse,index) in horses" :key="horse.id">
-				<Lane :horse="horse" :lane-no="index + 1" />
+			<template v-for="horse in horses" :key="horse.lane">
+				<Lane :horse="horse" :lane-no="horse.lane" />
 			</template>
 		</div>
 		<div class="race-area__footer">
 			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startRace" />
-			<ScorTable></ScorTable>
+			<ScoreList></ScoreList>
 			<Teleport to="body">
 				<Countdown v-model:show="isCountdown"></Countdown>
 				<ResultModal></ResultModal>
