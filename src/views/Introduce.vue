@@ -2,6 +2,7 @@
 import { onMounted, reactive } from 'vue'
 
 import Mechanism from '@components/Introduce/Mechanism.vue';
+import Information from '../components/Introduce/Information.vue';
 
 const data = reactive({
 	totalWay: 0,
@@ -40,6 +41,7 @@ onMounted(() => {
 <template>
 	<div class="sections">
 		<Mechanism :data="data" @trigger="triggerHandler" @reset="resetHandler"></Mechanism>
+		<Information :data="data"></Information>
 	</div>
 </template>
 

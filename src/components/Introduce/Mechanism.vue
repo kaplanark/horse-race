@@ -20,8 +20,8 @@ const resetHandler = () => emits('reset');
 		<Marker postion="left" text="Current speed" :count="props.data.speed + 'px/sec'"></Marker>
 		<Marker postion="right" text="Elapsed time" :count="props.data.scoreTime + 'sec'"></Marker>
 		<div class="btn-group">
-			<Button name="Trigger" size="small" @click="triggerHandler"></Button>
-			<Button name="Reset" size="small" variant="secondary" @click="resetHandler"></Button>
+			<Button name="Trigger" variant="primary" @click="triggerHandler"></Button>
+			<Button name="Reset" variant="secondary" @click="resetHandler"></Button>
 		</div>
 		<code>
 			{
