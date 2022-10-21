@@ -1,6 +1,6 @@
 <script setup>
 import Button from '@components/Button/Button.vue';
-import Marker from '../Marker.vue';
+import Marker from '@components/Marker.vue';
 const props = defineProps({
 	data: {
 		type: Object,
