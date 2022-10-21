@@ -8,7 +8,7 @@ const routes = [
 	},
 	{
 		path: "/race-track",
-		name: "Race Track",
+		name: "RaceTrack",
 		component: () => import("@views/RaceTrack.vue"),
 	},
 	{

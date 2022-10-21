@@ -3,7 +3,8 @@
 
 <template>
 	<div class="sections">
-		<section></section>
+		<section class="entry">
+		</section>
 		<section></section>
 		<section></section>
 	</div>
@@ -36,6 +37,34 @@
 
 	&::-webkit-scrollbar-thumb:hover {
 		background: var(--color-tertiary);
+	}
+}
+
+.entry {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		position: absolute;
+		content: '🐎';
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		font: 100vh Muybridge;
+		line-height: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--color-tertiary);
+		animation: 3s linear infinite gallop;
+		opacity: 0.1;
 	}
 }
 </style>

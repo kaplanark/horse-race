@@ -14,7 +14,7 @@ const clickHandler = (route) => {
 	setTimeout(() => {
 		isLoaderStatus.value = false;
 		router.push(route);
-	}, 3000);
+	}, 2000);
 	return;
 };
 </script>
@@ -23,7 +23,7 @@ const clickHandler = (route) => {
 	<div class="welcome">
 		<div class="welcome__content">
 			<Loader :status="isLoaderStatus"></Loader>
-			<h1>{{ $store.state.siteName }}</h1>
+			<h1>{{ $store.getters.getSiteName }}</h1>
 			<div class="btn-group">
 				<Button name="Get Started" variant="primary" @click="clickHandler('/race-track')"></Button>
 				<Button name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></Button>
@@ -44,7 +44,7 @@ const clickHandler = (route) => {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	background-image: url('@assets/images/mountain.png');
+	background-image: url('@assets/images/bg-mountain.png');
 	background-repeat: no-repeat;
 	background-position: top;
 	background-size: contain;
