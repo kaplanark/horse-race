@@ -6,7 +6,9 @@ import ScoreTable from '@components/ScoreTable.vue';
 
 const store = useStore();
 const emit = defineEmits(['start']);
-
+const closetHandler = () => {
+	store.dispatch('resetRace');
+}
 const restartHandler = () => {
 	store.dispatch('resetRace')
 		.then(() => {
@@ -27,6 +29,7 @@ const show = computed(() => store.getters.getRaceStatus === 'finished');
 			</div>
 			<div class="modal__content-footer">
 				<div class="btn-group">
+					<Button name="Close" variant="secondary" @click="closetHandler"></Button>
 					<Button name="Restart Race" variant="primary" @click="restartHandler"></Button>
 				</div>
 			</div>

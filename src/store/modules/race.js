@@ -2,7 +2,7 @@ export const race = {
 	namespace: true,
 	state() {
 		return {
-			raceStatus: 'ready', // ready, running, finished
+			raceStatus: 'ready', // ready, started, finished
 			countdown: false,
 			laneLength: 0,
 			horses: [

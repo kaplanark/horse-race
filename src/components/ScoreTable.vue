@@ -10,7 +10,7 @@ const horses = computed(() => {
 	let sortedData = [...data].sort((a, b) => compareFunction(a, b));
 	return sortedData;
 });
-const sortingNumbers = computed(() => store.state.sortingNumbers);
+const sortingNumbers = computed(() => store.getters.getSortingNumbers);
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const sortingNumbers = computed(() => store.state.sortingNumbers);
 		<div class="table__content">
 			<div class="row" v-for="horse in horses">
 				<span class="col">{{ horse.lane }}</span>
-				<span class="col text-strog" :style="{color:horse.color}">{{ horse.name }}</span>
+				<span class="col" :style="{color:horse.color}">{{ horse.name }}</span>
 				<span class="col">{{ horse.speed }} km/s</span>
 				<span class="col">{{ horse.scoreTime }} sec</span>
 			</div>

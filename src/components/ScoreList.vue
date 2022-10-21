@@ -6,7 +6,7 @@ const store = useStore();
 
 const horses = ref([]);
 
-const sortingNumbers = computed(() => store.state.sortingNumbers);
+const sortingNumbers = computed(() => store.getters.getSortingNumbers);
 
 watchEffect(() => {
 	const data = store.getters.getHorses;

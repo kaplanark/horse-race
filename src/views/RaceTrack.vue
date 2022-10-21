@@ -7,12 +7,14 @@ import ScoreList from '@components/ScoreList.vue';
 import Lane from '@components/Lane.vue';
 import Countdown from '@components/Countdown.vue';
 import ResultModal from '@components/Modal/ResultModal.vue';
+import SettingDrawer from '@components/SettingDrawer.vue';
 
 const store = useStore();
 
 const startHandler = () => {
-	store.commit('SET_RACE_STATUS', 'running');
+	store.commit('SET_RACE_STATUS', 'started');
 	store.commit('SET_COUNTDOWN', true);
+
 	const rngInterval = setInterval(() => {
 		store.state.race.horses.map(horse => {
 			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
@@ -40,14 +42,20 @@ const startHandler = () => {
 		}
 	}, 100);
 };
+const settingsHandler = () => store.commit('SET_SETTING_DRAWER', true);
 
-const isDisabled = computed(() => store.state.race.raceStatus === 'running');
+const isDisabled = computed(() => store.getters.getRaceStatus === 'started');
 const horses = computed(() => store.state.race.horses);
 </script>
 
 <template>
 	<div class="race-area">
-		<div class="race-area__header"></div>
+		<div class="race-area__header">
+			<Button name="☰" variant="secondary" @click="settingsHandler"></Button>
+			<Teleport to="body">
+				<SettingDrawer></SettingDrawer>
+			</Teleport>
+		</div>
 		<div class="race-area__content">
 			<template v-for="horse in horses" :key="horse.lane">
 				<Lane :horse="horse" :lane-no="horse.lane"></Lane>
@@ -76,6 +84,7 @@ const horses = computed(() => store.state.race.horses);
 		background-image: url('@assets/images/bg-mountain.png');
 		background-size: contain;
 		background-repeat: repeat;
+		padding: 24px;
 	}
 
 	&__content {

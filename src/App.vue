@@ -5,7 +5,7 @@ import { useStore } from 'vuex';
 const store = useStore();
 
 onBeforeMount(() => {
-	var screenWidth = window.innerWidth - 80;
+	var screenWidth = window.innerWidth;
 	store.commit('SET_LANE_LENGTH', screenWidth);
 });
 </script>

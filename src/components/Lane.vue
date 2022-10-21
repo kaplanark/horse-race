@@ -75,7 +75,7 @@ const props = defineProps({
 		top: 50%;
 		right: 0;
 		height: 70%;
-		width: 80px;
+		width: 20px;
 		transform: translateY(-50%);
 		z-index: 0;
 		border-left: 1px dashed var(--color-primary);
