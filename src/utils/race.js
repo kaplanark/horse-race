@@ -4,7 +4,6 @@ const raceStore = useRaceStore();
 
 export const startRace = () => {
 	raceStore.setRaceStatus('started');
-	raceStore.setCountdown(true);
 
 	const rngInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
@@ -13,8 +12,11 @@ export const startRace = () => {
 		});
 		const allFinished = raceStore.getHorses.every(horse => horse.finish);
 
-		if (allFinished) clearInterval(rngInterval);
-	}, 3000);
+		if (allFinished) {
+			raceStore.setRaceStatus('finished');
+			clearInterval(rngInterval)
+		};
+	}, 1000);
 
 	const wayInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
@@ -27,10 +29,7 @@ export const startRace = () => {
 			}
 		});
 		const allFinished = raceStore.getHorses.every(horse => horse.finish);
-		if (allFinished) {
-			raceStore.setRaceStatus('finished');
-			clearInterval(wayInterval);
-		}
+		if (allFinished) clearInterval(wayInterval);
 	}, 100);
-}
+};
 

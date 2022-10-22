@@ -12,7 +12,7 @@ watch(hidden, (value) => {
 	if (value) {
 		const interval = setInterval(() => {
 			countdown.value--;
-			if (countdown.value === 0) {
+			if (countdown.value === -1) {
 				clearInterval(interval);
 				raceStore.setCountdown(false);
 				countdown.value = 3;
@@ -47,6 +47,9 @@ watch(hidden, (value) => {
 		width: 100%;
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
+		background-image: radial-gradient(#5a5959 0.35px, rgba(0, 0, 0, 0.095) 0.35px);
+		background-size: 7px 7px;
+
 	}
 
 	&__content {
@@ -61,9 +64,9 @@ watch(hidden, (value) => {
 		overflow: hidden;
 		background-color: var(--color-white);
 		color: var(--color-primary);
-		height: 128px;
-		width: 128px;
-		font-size: 96px;
+		height: 220px;
+		width: 220px;
+		font-size: 128px;
 		font-family: var(--font-secondary);
 	}
 }
