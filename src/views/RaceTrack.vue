@@ -1,8 +1,6 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useRaceStore } from '@stores/use-race';
-import { useMainStore } from '@stores/use-main';
-
 import { startRace } from '@utils/race';
 
 import Button from '@components/Button/Button.vue';
@@ -13,10 +11,11 @@ import ResultModal from '@components/Modal/ResultModal.vue';
 import SettingDrawer from '@components/SettingDrawer.vue';
 
 const raceStore = useRaceStore();
-const mainStore = useMainStore();
+
+const isSettingDrawer = ref(false);
 
 const startHandler = () => startRace();
-const settingsHandler = () => mainStore.setSettingDrawer(true);
+const settingHandler = () => isSettingDrawer.value = true;
 
 const isDisabled = computed(() => raceStore.getRaceStatus === 'started');
 const horses = computed(() => raceStore.getHorses);
@@ -25,9 +24,9 @@ const horses = computed(() => raceStore.getHorses);
 <template>
 	<div class="race-area">
 		<div class="race-area__header">
-			<Button name="☰" variant="secondary" @click="settingsHandler"></Button>
+			<Button name="☰" variant="secondary" @click="settingHandler"></Button>
 			<Teleport to="body">
-				<SettingDrawer></SettingDrawer>
+				<SettingDrawer v-model:hidden="isSettingDrawer"></SettingDrawer>
 			</Teleport>
 		</div>
 		<div class="race-area__content">
