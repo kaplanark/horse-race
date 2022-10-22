@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap");
+
+@font-face {
+	font-family: Muybridge;
+	src: url(./assets/fonts/MuybridgeGX.woff2) format("woff2");
+}
+
+:root {
+	--color-primary: #223354;
+	--color-secondary: #444444;
+	--color-tertiary: #222226;
+	--color-quaternary: #69696a;
+	--color-white: #ffffff;
+	--color-black: #000000;
+
+	--font-primary: "Poppins", sans-serif;
+	--font-secondary: "Dancing Script", cursive;
+
+	--race-animation: paused;
+
+	font-family: var(--font-primary);
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.img-fluid {
+	height: 100vh;
+	width: auto;
+}
+.btn-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+}
+
+.text-strog {
+	font-weight: 600;
+}
+
+@keyframes clockwise {
+	from {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes gallop {
+	from {
+		font-variation-settings: "TIME" 0;
+	}
+	to {
+		font-variation-settings: "TIME" 15;
+	}
+}
