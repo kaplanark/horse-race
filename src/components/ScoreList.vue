@@ -37,7 +37,6 @@ const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 	&__header {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
-		border-bottom: 1px solid var(--color-primary);
 
 		&-item {
 			display: flex;
@@ -55,6 +54,20 @@ const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 				background-color: var(--color-primary);
 				color: var(--color-white);
 				font-size: 14px;
+				position: relative;
+
+				&:before {
+					position: absolute;
+					content: '';
+					bottom: 0;
+					left: 50%;
+					transform: translate(-50%, 120%);
+					width: 0;
+					height: 0;
+					border-right: 6px solid transparent;
+					border-left: 6px solid transparent;
+					border-top: 6px solid var(--color-primary);
+				}
 			}
 		}
 	}

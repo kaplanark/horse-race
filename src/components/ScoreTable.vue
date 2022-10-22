@@ -44,7 +44,7 @@ const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 8px;
-		border-bottom: 1px solid var(--color-primary);
+		border-bottom: 1px solid var(--color-solid);
 
 		.col {
 			color: var(--color-primary);
@@ -52,6 +52,7 @@ const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			margin-bottom: 4px;
 		}
 	}
 
@@ -68,6 +69,20 @@ const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 			color: var(--color-white);
 			text-align: center;
 			font-size: 14px;
+			position: relative;
+
+			&:before {
+				position: absolute;
+				content: '';
+				top: 50%;
+				right: 0;
+				transform: translateY(-50%) translateX(120%);
+				width: 0;
+				height: 0;
+				border-top: 6px solid transparent;
+				border-left: 6px solid var(--color-primary);
+				border-bottom: 6px solid transparent;
+			}
 		}
 	}
 
@@ -81,7 +96,7 @@ const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
 			gap: 8px;
-			border-bottom: 1px solid var(--color-primary);
+			border-bottom: 1px solid var(--color-solid);
 
 			.col {
 				display: flex;
