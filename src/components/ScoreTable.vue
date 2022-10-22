@@ -1,16 +1,13 @@
 <script setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
-import compareFunction from '@utils/compareFunction';
+import { useRaceStore } from '@stores/use-race';
+import { useMainStore } from '@stores/use-main';
 
-const store = useStore();
+const raceStore = useRaceStore();
+const mainStore = useMainStore();
 
-const horses = computed(() => {
-	const data = store.getters.getHorses;
-	let sortedData = [...data].sort((a, b) => compareFunction(a, b));
-	return sortedData;
-});
-const sortingNumbers = computed(() => store.getters.getSortingNumbers);
+const horses = computed(() => raceStore.getHorseScoreRanking);
+const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 </script>
 
 <template>

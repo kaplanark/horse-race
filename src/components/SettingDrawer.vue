@@ -1,11 +1,12 @@
 <script setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
-const store = useStore();
+import { useMainStore } from '@stores/use-main';
 
-const closeHandler = () => store.commit('SET_SETTING_DRAWER', false);
+const mainStore = useMainStore();
 
-const show = computed(() => store.getters.getSettingDrawer);
+const closeHandler = () => mainStore.setSettingDrawer(false);
+
+const show = computed(() => mainStore.getSettingDrawer);
 
 </script>
 

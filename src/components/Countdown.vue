@@ -1,10 +1,10 @@
 <script setup>
 import { computed } from 'vue'
-import { useStore } from 'vuex'
+import { useRaceStore } from '@stores/use-race';
 
-const store = useStore();
+const raceStore = useRaceStore();
 
-const show = computed(() => store.getters.getCountdown);
+const show = computed(() => raceStore.getCountdown);
 </script>
 
 <template>

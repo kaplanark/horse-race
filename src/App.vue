@@ -1,12 +1,12 @@
 <script setup>
 import { onBeforeMount } from 'vue';
-import { useStore } from 'vuex';
+import { useRaceStore } from '@stores/use-race';
 
-const store = useStore();
+const raceStore = useRaceStore();
 
 onBeforeMount(() => {
 	var screenWidth = window.innerWidth;
-	store.commit('SET_LANE_LENGTH', screenWidth);
+	raceStore.setLaneLength(screenWidth);
 });
 </script>
 
