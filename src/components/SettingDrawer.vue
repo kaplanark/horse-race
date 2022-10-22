@@ -1,21 +1,20 @@
 <script setup>
-import { computed } from 'vue';
-import { useMainStore } from '@stores/use-main';
+const props = defineProps({
+	hidden: {
+		type: Boolean,
+		defult: false
+	}
+});
+const emit = defineEmits(['update:hidden']);
 
-const mainStore = useMainStore();
-
-const closeHandler = () => mainStore.setSettingDrawer(false);
-
-const show = computed(() => mainStore.getSettingDrawer);
-
+const closeHandler = () => emit('update:hidden', false);
 </script>
 
 <template>
-	<div class="drawer" v-if="show">
+	<div class="drawer" v-if="props.hidden">
 		<div class="drawer__overlay" @click="closeHandler"></div>
 		<div class="drawer__content">
 			<div class="drawer__content-header">
-
 			</div>
 			<div class="drawer__content-body">
 
