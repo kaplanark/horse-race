@@ -105,8 +105,9 @@ export const useRaceStore = defineStore('race', {
 		},
 		setCountdown(countdown) {
 			this.countdown = countdown;
-			setTimeout(() => {
+			const timer = setTimeout(() => {
 				this.countdown = false;
+				clearTimeout(timer);
 			}, 3000);
 		},
 		setLaneLength(laneLength) {
