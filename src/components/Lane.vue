@@ -21,7 +21,7 @@ const props = defineProps({
 <style lang="scss">
 .lane {
 	position: relative;
-	background-image: url('@assets/images/bg-lane.png');
+	background-image: url('@assets/images/bg-lane.webp');
 	background-size: contain;
 	background-position: bottom;
 	background-repeat: no-repeat;
