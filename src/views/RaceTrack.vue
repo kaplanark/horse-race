@@ -54,7 +54,7 @@ const horses = computed(() => raceStore.getHorses);
 	grid-template-rows: 6fr 12fr 4fr;
 
 	&__header {
-		background-image: url('@assets/images/bg-mountain.png');
+		background-image: url('@assets/images/bg-mountain.webp');
 		background-size: contain;
 		background-repeat: repeat;
 		padding: 24px;
