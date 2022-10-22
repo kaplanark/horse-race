@@ -12,10 +12,10 @@
 			</small>
 		</div>
 		<div class="column">
-			<img src="../../assets/images/1.png" alt="">
+			<img src="../../assets/images/speed-interval-function-img.webp" alt="">
 		</div>
 		<div class="column">
-			<img src="../../assets/images/2.png" alt="">
+			<img src="../../assets/images/travelled-distance-function-img.webp" alt="">
 		</div>
 		<div class="column text-start">
 			<h3>Distance Traveled and Other Calculations</h3>
