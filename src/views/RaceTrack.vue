@@ -1,6 +1,9 @@
 <script setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { useRaceStore } from '@stores/use-race';
+import { useMainStore } from '@stores/use-main';
+
+import { startRace } from '@utils/race';
 
 import Button from '@components/Button/Button.vue';
 import ScoreList from '@components/ScoreList.vue';
@@ -9,43 +12,14 @@ import Countdown from '@components/Countdown.vue';
 import ResultModal from '@components/Modal/ResultModal.vue';
 import SettingDrawer from '@components/SettingDrawer.vue';
 
-const store = useStore();
+const raceStore = useRaceStore();
+const mainStore = useMainStore();
 
-const startHandler = () => {
-	store.commit('SET_RACE_STATUS', 'started');
-	store.commit('SET_COUNTDOWN', true);
+const startHandler = () => startRace();
+const settingsHandler = () => mainStore.setSettingDrawer(true);
 
-	const rngInterval = setInterval(() => {
-		store.state.race.horses.map(horse => {
-			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
-			if (!horse.finish) horse.run = true;
-		});
-		const allFinished = store.state.race.horses.every(horse => horse.finish);
-
-		if (allFinished) clearInterval(rngInterval);
-	}, 3000);
-
-	const wayInterval = setInterval(() => {
-		store.state.race.horses.map(horse => {
-			if (horse.travelledDistance < store.state.race.laneLength) {
-				horse.scoreTime++;
-				horse.travelledDistance += horse.speed / 4;
-			} else {
-				horse.finish = true;
-				horse.run = false;
-			}
-		});
-		const allFinished = store.state.race.horses.every(horse => horse.finish);
-		if (allFinished) {
-			store.commit('SET_RACE_STATUS', 'finished');
-			clearInterval(wayInterval);
-		}
-	}, 100);
-};
-const settingsHandler = () => store.commit('SET_SETTING_DRAWER', true);
-
-const isDisabled = computed(() => store.getters.getRaceStatus === 'started');
-const horses = computed(() => store.state.race.horses);
+const isDisabled = computed(() => raceStore.getRaceStatus === 'started');
+const horses = computed(() => raceStore.getHorses);
 </script>
 
 <template>
@@ -66,7 +40,7 @@ const horses = computed(() => store.state.race.horses);
 			<ScoreList></ScoreList>
 			<Teleport to="body">
 				<Countdown></Countdown>
-				<ResultModal @start="startHandler"></ResultModal>
+				<ResultModal></ResultModal>
 			</Teleport>
 		</div>
 	</div>

@@ -1,18 +1,13 @@
 <script setup>
-import { watchEffect, ref, computed } from 'vue'
-import { useStore } from 'vuex';
-import compareFunction from '@utils/compareFunction';
-const store = useStore();
+import { computed } from 'vue'
+import { useRaceStore } from '@stores/use-race';
+import { useMainStore } from '@stores/use-main';
 
-const horses = ref([]);
+const raceStore = useRaceStore();
+const mainStore = useMainStore();
 
-const sortingNumbers = computed(() => store.getters.getSortingNumbers);
-
-watchEffect(() => {
-	const data = store.getters.getHorses;
-	let sortedData = [...data].sort((a, b) => compareFunction(a, b));
-	horses.value = sortedData;
-});
+const horses = computed(() => raceStore.getHorseScoreRanking);
+const sortingNumbers = computed(() => mainStore.getSortingNumbers);
 </script>
 
 <template>

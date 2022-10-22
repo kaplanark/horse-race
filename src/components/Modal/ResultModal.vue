@@ -1,22 +1,21 @@
 <script setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { useRaceStore } from '@stores/use-race';
+import { startRace } from '@utils/race';
+
 import Button from '@components/Button/Button.vue';
 import ScoreTable from '@components/ScoreTable.vue';
 
-const store = useStore();
-const emit = defineEmits(['start']);
-const closetHandler = () => {
-	store.dispatch('resetRace');
-}
+const raceStore = useRaceStore();
+
+const closetHandler = () => raceStore.resetRace();
+
 const restartHandler = () => {
-	store.dispatch('resetRace')
-		.then(() => {
-			emit('start');
-		});
+	raceStore.resetRace();
+	startRace();
 };
 
-const show = computed(() => store.getters.getRaceStatus === 'finished');
+const show = computed(() => raceStore.getRaceStatus === 'finished');
 </script>
 
 <template>

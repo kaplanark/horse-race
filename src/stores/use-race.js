@@ -1,6 +1,7 @@
-export const race = {
-	namespace: true,
-	state() {
+import { defineStore } from 'pinia';
+
+export const useRaceStore = defineStore('race', {
+	state: () => {
 		return {
 			raceStatus: 'ready', // ready, started, finished
 			countdown: false,
@@ -90,31 +91,31 @@ export const race = {
 		}
 	},
 	getters: {
-		getHorses(state) {
-			return state.horses;
-		},
-		getRaceStatus(state) {
-			return state.raceStatus;
-		},
-		getCountdown(state) {
-			return state.countdown;
+		getRaceStatus: (state) => state.raceStatus,
+		getCountdown: (state) => state.countdown,
+		getLaneLength: (state) => state.laneLength,
+		getHorses: (state) => state.horses,
+		getHorseScoreRanking: (state) => {
+			return [...state.horses].sort((a, b) => (b.travelledDistance / b.scoreTime) - (a.travelledDistance / a.scoreTime));
 		}
 	},
-	mutations: {
-		SET_LANE_LENGTH(state, length) {
-			state.laneLength = length;
+	actions: {
+		setRaceStatus(status) {
+			this.raceStatus = status;
 		},
-		SET_RACE_STATUS(state, status) {
-			state.raceStatus = status;
-		},
-		SET_COUNTDOWN(state, value) {
-			state.countdown = value;
+		setCountdown(countdown) {
+			this.countdown = countdown;
 			setTimeout(() => {
-				state.countdown = false;
+				this.countdown = false;
 			}, 3000);
 		},
-		SET_RESET_RACE(state) {
-			state.horses.map(horse => {
+		setLaneLength(laneLength) {
+			this.laneLength = laneLength;
+		},
+		resetRace() {
+			this.raceStatus = 'ready';
+			this.countdown = false;
+			this.horses.map((horse) => {
 				horse.travelledDistance = 0;
 				horse.speed = 0;
 				horse.finish = false;
@@ -122,12 +123,5 @@ export const race = {
 				horse.run = false;
 			});
 		}
-	},
-	actions: {
-		async resetRace(context) {
-			await context.commit('SET_RACE_STATUS', 'ready');
-			await context.commit('SET_RESET_RACE');
-			await context.commit('SET_COUNTDOWN', false);
-		}
 	}
-};
+})

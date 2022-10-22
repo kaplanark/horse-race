@@ -6,7 +6,6 @@ import Button from '@components/Button/Button.vue';
 import Loader from '@components/Loader/Loader.vue';
 
 const router = useRouter();
-
 const isLoaderStatus = ref(false);
 
 const clickHandler = (route) => {
@@ -23,7 +22,7 @@ const clickHandler = (route) => {
 	<div class="welcome">
 		<div class="welcome__content">
 			<Loader :status="isLoaderStatus"></Loader>
-			<h1>{{ $store.getters.getSiteName }}</h1>
+			<h1>Horse Racing</h1>
 			<div class="btn-group">
 				<Button name="Get Started" variant="primary" @click="clickHandler('/race-track')"></Button>
 				<Button name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></Button>
