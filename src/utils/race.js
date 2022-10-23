@@ -1,8 +1,7 @@
 import { useRaceStore } from '@stores/use-race';
 
-const raceStore = useRaceStore();
-
 export const startRace = () => {
+	const raceStore = useRaceStore();
 	raceStore.setRaceStatus('started');
 
 	const speedInterval = setInterval(() => {

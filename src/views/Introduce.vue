@@ -2,7 +2,7 @@
 import { onMounted, reactive } from 'vue'
 
 import Mechanism from '@components/Introduce/Mechanism.vue';
-import Information from '../components/Introduce/Information.vue';
+import Information from '@components/Introduce/Information.vue';
 
 const data = reactive({
 	totalWay: 0,
