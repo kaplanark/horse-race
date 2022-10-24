@@ -78,5 +78,9 @@ onMounted(() => {
 
 section {
 	scroll-snap-align: start;
+
+	@media (max-width: 992px) {
+		scroll-snap-align: none;
+	}
 }
 </style>
