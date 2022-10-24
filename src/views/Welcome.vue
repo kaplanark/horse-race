@@ -22,7 +22,7 @@ const clickHandler = (route) => {
 	<div class="welcome">
 		<div class="welcome__content">
 			<Loader :status="isLoaderStatus"></Loader>
-			<h1>Horse Racing</h1>
+			<h1>Horse Race</h1>
 			<div class="btn-group">
 				<Button name="Get Started" variant="primary" @click="clickHandler('/race-track')"></Button>
 				<Button name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></Button>
