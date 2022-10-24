@@ -79,5 +79,23 @@
 			}
 		}
 	}
+
+	@media (max-width: 992px) {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(4, 1fr);
+		height: 100%;
+
+		.column {
+			&>* {
+				text-align: center;
+			}
+
+			&.text-start {
+				&>* {
+					text-align: center;
+				}
+			}
+		}
+	}
 }
 </style>

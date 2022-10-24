@@ -26,7 +26,6 @@ const props = defineProps({
 	background-position: bottom;
 	background-repeat: no-repeat;
 	max-width: 100vw;
-	overflow: hidden;
 
 	.horse {
 		height: 100%;

@@ -76,6 +76,11 @@ const horses = computed(() => raceStore.getHorses);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			gap: 24px;
+		}
 	}
 }
 </style>
