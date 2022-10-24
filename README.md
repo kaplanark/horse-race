@@ -9,11 +9,11 @@ to experience <a href="https://horseracing.netlify.app/">DEMO</a>
 or run the following command in your terminal:
 
 ```bash
-git clone <repo link>
+git clone https://github.com/kaplanark/horse-race.git
 ```
 
 ```bash
-cd <project folder>
+cd horse-race
 ```
 
 ```bash
