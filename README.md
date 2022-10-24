@@ -8,15 +8,20 @@ to experience <a href="https://horseracing.netlify.app/">DEMO</a>
 
 or run the following command in your terminal:
 
-```
+```bash
 git clone <repo link>
+```
 
+```bash
 cd <project folder>
+```
 
+```bash
 npm install
+```
 
+```bash
 npm run dev
-
 ```
 
 # Project Views
