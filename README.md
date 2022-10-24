@@ -1,3 +1,5 @@
+<img src="./screenshots/23474.png">
+
 # Horse Race
 
 Horse racing is a competition simulation in which eight horses compete against each other. The horses are given a random speed and a constant distance to travel. The horse with the highest speed win.
