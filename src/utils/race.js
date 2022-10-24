@@ -1,22 +1,23 @@
 import { useRaceStore } from '@stores/use-race';
 
-const raceStore = useRaceStore();
-
 export const startRace = () => {
+	const raceStore = useRaceStore();
 	raceStore.setRaceStatus('started');
-	raceStore.setCountdown(true);
 
-	const rngInterval = setInterval(() => {
+	const speedInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
 			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
 			if (!horse.finish) horse.run = true;
 		});
 		const allFinished = raceStore.getHorses.every(horse => horse.finish);
 
-		if (allFinished) clearInterval(rngInterval);
-	}, 3000);
+		if (allFinished) {
+			raceStore.setRaceStatus('finished');
+			clearInterval(speedInterval)
+		};
+	}, 1000);
 
-	const wayInterval = setInterval(() => {
+	const travelledDistanceInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
 			if (horse.travelledDistance < raceStore.getLaneLength) {
 				horse.scoreTime++;
@@ -27,10 +28,6 @@ export const startRace = () => {
 			}
 		});
 		const allFinished = raceStore.getHorses.every(horse => horse.finish);
-		if (allFinished) {
-			raceStore.setRaceStatus('finished');
-			clearInterval(wayInterval);
-		}
+		if (allFinished) clearInterval(travelledDistanceInterval);
 	}, 100);
-}
-
+};

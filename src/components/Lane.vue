@@ -26,7 +26,6 @@ const props = defineProps({
 	background-position: bottom;
 	background-repeat: no-repeat;
 	max-width: 100vw;
-	overflow: hidden;
 
 	.horse {
 		height: 100%;
@@ -73,13 +72,14 @@ const props = defineProps({
 		position: absolute;
 		content: '';
 		top: 50%;
-		right: 0;
-		height: 70%;
-		width: 20px;
+		right: 20px;
+		height: 90%;
+		width: 10px;
 		transform: translateY(-50%);
 		z-index: 0;
-		border-left: 1px dashed var(--color-primary);
-		opacity: 0.5;
+		background-color: var(--color-white);
+		background-size: 5px 5px;
+		background-image: repeating-linear-gradient(45deg, #222226 0, #222226 0.5px, #ffffff 0, #ffffff 50%);
 	}
 }
 </style>

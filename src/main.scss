@@ -13,6 +13,7 @@
 	--color-quaternary: #69696a;
 	--color-white: #ffffff;
 	--color-black: #000000;
+	--color-solid: #dcdcdc;
 
 	--font-primary: "Poppins", sans-serif;
 	--font-secondary: "Dancing Script", cursive;
@@ -33,6 +34,11 @@ html {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+ul,
+li {
+	list-style: none;
 }
 
 code {

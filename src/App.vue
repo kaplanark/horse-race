@@ -11,5 +11,5 @@ onBeforeMount(() => {
 </script>
 
 <template>
-	<RouterView></RouterView>
+	<RouterView />
 </template>

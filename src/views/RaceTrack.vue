@@ -14,7 +14,13 @@ const raceStore = useRaceStore();
 
 const isSettingDrawer = ref(false);
 
-const startHandler = () => startRace();
+const startHandler = () => {
+	raceStore.setCountdown(true);
+	const timer = setTimeout(() => {
+		startRace();
+		clearTimeout(timer);
+	}, 3000);
+}
 const settingHandler = () => isSettingDrawer.value = true;
 
 const isDisabled = computed(() => raceStore.getRaceStatus === 'started');
@@ -70,6 +76,11 @@ const horses = computed(() => raceStore.getHorses);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			gap: 24px;
+		}
 	}
 }
 </style>

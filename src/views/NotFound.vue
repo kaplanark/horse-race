@@ -21,7 +21,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url('@assets/images/bg-mountain.png');
+	background-image: url('@assets/images/bg-mountain.webp');
 	background-repeat: no-repeat;
 	background-position: top;
 	background-size: contain;

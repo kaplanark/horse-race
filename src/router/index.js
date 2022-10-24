@@ -1,31 +1,36 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import Welcome from '@views/Welcome.vue';
+import RaceTrack from '@views/RaceTrack.vue';
+import Introduce from '@views/Introduce.vue';
+import NotFound from '@views/NotFound.vue';
+
 const routes = [
 	{
 		path: "/",
 		name: "Welcome",
-		component: () => import("@views/Welcome.vue"),
+		component: Welcome
 	},
 	{
 		path: "/race-track",
 		name: "RaceTrack",
-		component: () => import("@views/RaceTrack.vue"),
+		component: RaceTrack
 	},
 	{
 		path: "/introduce",
 		name: "Introduce",
-		component: () => import("@views/Introduce.vue"),
+		component: Introduce,
 	},
 	{
 		path: "/:pathMatch(.*)*",
 		name: "NotFound",
-		component: () => import("@views/NotFound.vue"),
+		component: NotFound
 	}
 ];
 
 const router = createRouter({
 	history: createWebHistory(),
-	routes,
+	routes
 });
 
 export default router;

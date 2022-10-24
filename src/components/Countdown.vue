@@ -1,17 +1,32 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRaceStore } from '@stores/use-race';
 
 const raceStore = useRaceStore();
 
-const show = computed(() => raceStore.getCountdown);
+const countdown = ref(3);
+
+const hidden = computed(() => raceStore.getCountdown);
+
+watch(hidden, (value) => {
+	if (value) {
+		const interval = setInterval(() => {
+			countdown.value--;
+			if (countdown.value === -1) {
+				clearInterval(interval);
+				raceStore.setCountdown(false);
+				countdown.value = 3;
+			}
+		}, 1000);
+	}
+});
 </script>
 
 <template>
-	<div class="countdown" v-if="show">
+	<div class="countdown" v-if="hidden">
 		<div class="countdown__overlay"></div>
 		<div class="countdown__content">
-			<img src="@assets/images/countdown.gif" alt="">
+			{{ countdown }}
 		</div>
 	</div>
 </template>
@@ -32,6 +47,9 @@ const show = computed(() => raceStore.getCountdown);
 		width: 100%;
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
+		background-image: radial-gradient(#5a5959 0.35px, rgba(0, 0, 0, 0.095) 0.35px);
+		background-size: 7px 7px;
+
 	}
 
 	&__content {
@@ -44,6 +62,12 @@ const show = computed(() => raceStore.getCountdown);
 		justify-content: center;
 		border-radius: 50%;
 		overflow: hidden;
+		background-color: var(--color-white);
+		color: var(--color-primary);
+		height: 220px;
+		width: 220px;
+		font-size: 128px;
+		font-family: var(--font-secondary);
 	}
 }
 </style>
