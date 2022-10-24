@@ -51,6 +51,8 @@ onMounted(() => {
 	width: 100vw;
 	overflow-y: scroll;
 	scroll-snap-type: y mandatory;
+	-moz-scroll-snap-type: y mandatory;
+	-webkit-scroll-snap-type: y mandatory;
 	overflow-x: hidden;
 	background-color: var(--color-white);
 	background-image: linear-gradient(#f6f6f6 0.5px, transparent 0.5px), linear-gradient(to right, #f6f6f6 0.5px, #ffffff 0.5px);
@@ -78,5 +80,7 @@ onMounted(() => {
 
 section {
 	scroll-snap-align: start;
+	-moz-scroll-snap-align: start;
+	-webkit-scroll-snap-align: start;
 }
 </style>
