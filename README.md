@@ -1,6 +1,6 @@
 <img src="./screenshots/23474.png">
 
-# Horse Race
+# Horse Race (protein Frontend Bootcamp Final Case)
 
 Horse racing is a competition simulation in which eight horses compete against each other. The horses are given a random speed and a constant distance to travel. The horse with the highest speed win.
 
@@ -26,7 +26,7 @@ npm run dev
 
 # Project Views
 
-<img src="./screenshots/welcome.gif"/>
+<img src="./screenshots/welcome.png"/>
 
 # Components
 
