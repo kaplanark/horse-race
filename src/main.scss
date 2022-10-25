@@ -61,18 +61,6 @@ code {
 	font-weight: 600;
 }
 
-@keyframes clockwise {
-	from {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-
-	to {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
-}
-
 @keyframes gallop {
 	from {
 		font-variation-settings: "TIME" 0;
