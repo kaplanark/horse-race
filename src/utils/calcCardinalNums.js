@@ -1,11 +1,22 @@
-export default function cardinalNumbers(param) {
-	const arr = new Array(param);
-
-	for (let i = 0; i < param; i++) {
-		if (i === 0) arr[i] = '1st';
-		if (i === 1) arr[i] = '2nd';
-		if (i === 2) arr[i] = '3rd';
-		if (i > 2) arr[i] = `${i + 1}th`;
+function calcCardinalNumber(number) {
+	let j = number % 10, k = number % 100;
+	if (j == 1 && k != 11) {
+		return number + "st";
 	}
-	return arr;
+	if (j == 2 && k != 12) {
+		return number + "nd";
+	}
+	if (j == 3 && k != 13) {
+		return number + "rd";
+	}
+	return number + "th";
+}
+
+export default function cardinalNumbers(param) {
+	const resoult = [];
+	for (let i = 0; i < param; i++) {
+		const number = calcCardinalNumber(i + 1);
+		resoult.push(number);
+	}
+	return resoult;
 }

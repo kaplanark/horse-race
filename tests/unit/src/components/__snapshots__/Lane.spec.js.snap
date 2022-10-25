@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Lane.vue > is correctly rendered 1`] = `
+"<div class=\\"lane\\" data-lane=\\"1\\">
+  <div class=\\"horse running\\" style=\\"--color-horse: #3b302f; margin-left: 210px;\\"></div>
+</div>"
+`;
