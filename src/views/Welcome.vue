@@ -10,9 +10,10 @@ const isLoaderStatus = ref(false);
 
 const clickHandler = (route) => {
 	isLoaderStatus.value ? isLoaderStatus.value = false : isLoaderStatus.value = true;
-	setTimeout(() => {
+	const loaderTimer = setTimeout(() => {
 		isLoaderStatus.value = false;
 		router.push(route);
+		clearTimeout(loaderTimer);
 	}, 2000);
 	return;
 };
