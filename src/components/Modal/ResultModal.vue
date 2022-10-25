@@ -1,10 +1,11 @@
 <script setup>
 import { computed } from 'vue';
 import { useRaceStore } from '@stores/use-race';
-import { startRace } from '@utils/race';
 
 import Button from '@components/Button/Button.vue';
 import ScoreTable from '@components/ScoreTable.vue';
+
+const emit = defineEmits(['start']);
 
 const raceStore = useRaceStore();
 
@@ -13,9 +14,9 @@ const closetHandler = () => raceStore.resetRace();
 const restartHandler = () => {
 	raceStore.resetRace();
 	raceStore.setCountdown(true);
-	const timer = setTimeout(() => {
-		startRace();
-		clearTimeout(timer);
+	const countdownTimer = setTimeout(() => {
+		emit('start');
+		clearTimeout(countdownTimer);
 	}, 3000);
 };
 

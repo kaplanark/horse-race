@@ -7,20 +7,20 @@ const raceStore = useRaceStore();
 const mainStore = useMainStore();
 
 const horses = computed(() => raceStore.getHorseScoreRanking);
-const sortingNumbers = computed(() => mainStore.getSortingNumbers);
+const cardinalNumbers = computed(() => mainStore.getCardinalNumbers);
 </script>
 
 <template>
 	<div class="list">
 		<div class="list__header">
-			<div class="list__header-item" v-for="number in sortingNumbers" :key="number">
-				<span>{{ number }}</span>
+			<div class="list__header-item" v-for="cardinalNumber in cardinalNumbers" :key="cardinalNumber">
+				<span>{{ cardinalNumber }}</span>
 			</div>
 		</div>
 		<div class="list__body">
 			<div class="list__body-cell" v-for="horse in horses" :key="horse.lane">
 				<span v-if="horse.travelledDistance === 0">------</span>
-				<span v-else :style="{'color':horse.color}">{{ horse.name }}</span>
+				<span v-else :style="{ 'color': horse.color }">{{ horse.name }}</span>
 			</div>
 		</div>
 	</div>

@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useRaceStore } from '@stores/use-race';
-import { startRace } from '@utils/race';
 
 import Button from '@components/Button/Button.vue';
 import ScoreList from '@components/ScoreList.vue';
@@ -14,11 +13,42 @@ const raceStore = useRaceStore();
 
 const isSettingDrawer = ref(false);
 
+const startRaceFunction = () => {
+	raceStore.setRaceStatus('started');
+
+	const speedInterval = setInterval(() => {
+		raceStore.getHorses.map(horse => {
+			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
+			if (!horse.finish) horse.run = true;
+		});
+		const allFinished = raceStore.getHorses.every(horse => horse.finish);
+
+		if (allFinished) {
+			raceStore.setRaceStatus('finished');
+			clearInterval(speedInterval)
+		};
+	}, 1000);
+
+	const travelledDistanceInterval = setInterval(() => {
+		raceStore.getHorses.map(horse => {
+			if (horse.travelledDistance < raceStore.getLaneLength) {
+				horse.scoreTime++;
+				horse.travelledDistance += horse.speed / 4;
+			} else {
+				horse.finish = true;
+				horse.run = false;
+			}
+		});
+		const allFinished = raceStore.getHorses.every(horse => horse.finish);
+		if (allFinished) clearInterval(travelledDistanceInterval);
+	}, 100);
+};
+
 const startHandler = () => {
 	raceStore.setCountdown(true);
-	const timer = setTimeout(() => {
-		startRace();
-		clearTimeout(timer);
+	const countdownTimer = setTimeout(() => {
+		startRaceFunction();
+		clearTimeout(countdownTimer);
 	}, 3000);
 }
 const settingHandler = () => isSettingDrawer.value = true;
@@ -45,7 +75,7 @@ const horses = computed(() => raceStore.getHorses);
 			<ScoreList></ScoreList>
 			<Teleport to="body">
 				<Countdown></Countdown>
-				<ResultModal></ResultModal>
+				<ResultModal @start="startHandler"></ResultModal>
 			</Teleport>
 		</div>
 	</div>

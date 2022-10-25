@@ -3,12 +3,15 @@ import { defineStore } from 'pinia';
 export const useMainStore = defineStore('main', {
 	state: () => {
 		return {
-			sortingNumbers: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th'],
+			cardinalNumbers: [],
 		};
 	},
 	getters: {
-		getSortingNumbers(state) {
-			return state.sortingNumbers;
-		},
-	}
+		getCardinalNumbers: (state) => state.cardinalNumbers,
+	},
+	actions: {
+		setCardinalNumbers(payload) {
+			this.cardinalNumbers = payload;
+		}
+	},
 });
