@@ -13,7 +13,6 @@ const data = reactive({
 });
 
 const triggerHandler = () => {
-	console.log('trigger');
 	const rng = Math.floor(Math.random() * (40 - 20) + 20);
 	if (data.travelledDistance <= data.totalWay) {
 		data.speed = rng;

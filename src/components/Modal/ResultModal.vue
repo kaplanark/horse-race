@@ -13,11 +13,7 @@ const closetHandler = () => raceStore.resetRace();
 
 const restartHandler = () => {
 	raceStore.resetRace();
-	raceStore.setCountdown(true);
-	const countdownTimer = setTimeout(() => {
-		emit('start');
-		clearTimeout(countdownTimer);
-	}, 3000);
+	emit('start');
 };
 
 const show = computed(() => raceStore.getRaceStatus === 'finished');

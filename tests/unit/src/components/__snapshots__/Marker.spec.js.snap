@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`Marker.vue > is correctly rendered 1`] = `"<div class=\\"marker marker--left\\"><span class=\\"marker__text\\">Speed</span><span class=\\"marker__count\\">10km/sec</span></div>"`;

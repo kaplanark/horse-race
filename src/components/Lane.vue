@@ -12,9 +12,9 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="lane" :lane-no="props.laneNo">
-		<div class="horse" :class="{'runing':props.horse.run}"
-			:style="{'--color-horse':props.horse.color,'margin-left':props.horse.travelledDistance+'px'}"></div>
+	<div class="lane" :data-lane="props.laneNo">
+		<div class="horse" :class="{'running':props.horse.run}"
+			:style="{ '--color-horse': props.horse.color, 'margin-left': props.horse.travelledDistance + 'px' }"></div>
 	</div>
 </template>
 
@@ -45,14 +45,14 @@ const props = defineProps({
 			z-index: 1;
 		}
 
-		&.runing {
+		&.running {
 			animation: 1s linear infinite gallop;
 		}
 	}
 
 	&::before {
 		position: absolute;
-		content: attr(lane-no);
+		content: attr(data-lane);
 		top: 50%;
 		left: 2px;
 		transform: translateY(-50%);

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Loader.vue > is correctly rendered 1`] = `
+"<div class=\\"loader loader--active\\">
+  <div class=\\"loader__content\\">🐎</div>
+</div>"
+`;
