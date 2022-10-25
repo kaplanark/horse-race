@@ -25,17 +25,16 @@ const resetHandler = () => emits('reset');
 		</div>
 		<code>
 			{
-				travelled-distance:{{props.data.travelledDistance}}px,
-				rng-speed:{{props.data.speed}}px/sec,
-				score-time:{{props.data.scoreTime}}sec
-				runing:{{props.data.run}}
+				travelled-distance:{{ props.data.travelledDistance }}px,
+				rng-speed:{{ props.data.speed }}px/sec,
+				score-time:{{ props.data.scoreTime }}sec
+				runing:{{ props.data.run }}
 			}
 		</code>
-
 		<div class="graphic" id="graphic">
 			<div class="graphic__title">Screen width <strong>{{ props.data.totalWay }}</strong> px</div>
 			<div class="graphic__content">
-				<div class="ball" :class="{'run':data.run}" :style="{'margin-left':props.data.travelledDistance + 'px'}">
+				<div class="ball" :class="{'run':data.run}" :style="{ 'margin-left': props.data.travelledDistance + 'px' }">
 				</div>
 			</div>
 		</div>
