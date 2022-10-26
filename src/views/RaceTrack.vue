@@ -17,7 +17,6 @@ const raceTimer = ref(0);
 
 const startRaceFunction = () => {
 	raceStore.setRaceStatus('started');
-	raceTimer.value = 0;
 	const speedInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
 			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
@@ -50,6 +49,7 @@ const startRaceFunction = () => {
 
 const startHandler = () => {
 	raceStore.setCountdown(true);
+	raceTimer.value = 0;
 	const countdownTimer = setTimeout(() => {
 		startRaceFunction();
 		clearTimeout(countdownTimer);
