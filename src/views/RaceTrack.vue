@@ -66,7 +66,7 @@ const horses = computed(() => raceStore.getHorses);
 		<div class="race-area__header">
 			<Button name="☰" variant="secondary" @click="settingHandler"></Button>
 			<Teleport to="body">
-				<SettingDrawer v-model:hidden="isSettingDrawer"></SettingDrawer>
+				<SettingDrawer v-model:open="isSettingDrawer"></SettingDrawer>
 			</Teleport>
 			<Timer :time="raceTimer"></Timer>
 		</div>

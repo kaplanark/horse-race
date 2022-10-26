@@ -1,17 +1,17 @@
 <script setup>
 const props = defineProps({
-	hidden: {
+	open: {
 		type: Boolean,
 		defult: false
 	}
 });
-const emit = defineEmits(['update:hidden']);
+const emit = defineEmits(['update:open']);
 
-const closeHandler = () => emit('update:hidden', false);
+const closeHandler = () => emit('update:open', false);
 </script>
 
 <template>
-	<div class="drawer" v-if="props.hidden">
+	<div class="drawer" v-if="props.open">
 		<div class="drawer__overlay" @click="closeHandler"></div>
 		<div class="drawer__content">
 			<div class="drawer__content-header">
