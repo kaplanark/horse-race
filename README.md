@@ -58,3 +58,15 @@ npm run dev
 | position | `String` | _left_  | <sub style="color: #999">It takes the position of the marker.</sub> |
 |   text   | `String` |  _''_   |   <sub style="color: #999">It takes the text of the marker.</sub>   |
 |  count   | `Number` |  _''_   |  <sub style="color: #999">It takes the count of the marker.</sub>   |
+
+## Timer component props
+
+| Name |   Type   | Default |                          Description                           |
+| :--: | :------: | :-----: | :------------------------------------------------------------: |
+| time | `Number` |   _0_   | <sub style="color: #999">It takes the time of the timer.</sub> |
+
+## SettingsDraver component props
+
+| Name |   Type    | Default |                                Description                                 |
+| :--: | :-------: | :-----: | :------------------------------------------------------------------------: |
+| open | `Boolean` |   _0_   | <sub style="color: #999">It takes the status of the settings drawer.</sub> |
