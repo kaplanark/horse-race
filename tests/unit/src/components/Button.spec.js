@@ -9,8 +9,7 @@ describe('Button.vue', () => {
 			props: {
 				name: 'Button',
 				variant: 'primary',
-				disbaled: false,
-				color: 'white',
+				disbaled: false
 			}
 		});
 	});

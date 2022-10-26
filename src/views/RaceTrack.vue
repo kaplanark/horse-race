@@ -12,10 +12,11 @@ import SettingDrawer from '@components/SettingDrawer.vue';
 const raceStore = useRaceStore();
 
 const isSettingDrawer = ref(false);
+const raceTimer = ref(0);
 
 const startRaceFunction = () => {
 	raceStore.setRaceStatus('started');
-
+	raceTimer.value = 0;
 	const speedInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
 			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
@@ -27,6 +28,8 @@ const startRaceFunction = () => {
 			raceStore.setRaceStatus('finished');
 			clearInterval(speedInterval)
 		};
+
+		raceTimer.value++;
 	}, 1000);
 
 	const travelledDistanceInterval = setInterval(() => {
@@ -64,6 +67,7 @@ const horses = computed(() => raceStore.getHorses);
 			<Teleport to="body">
 				<SettingDrawer v-model:hidden="isSettingDrawer"></SettingDrawer>
 			</Teleport>
+			<div class="timer">{{ raceTimer }}</div>
 		</div>
 		<div class="race-area__content">
 			<template v-for="horse in horses" :key="horse.lane">
@@ -94,6 +98,9 @@ const horses = computed(() => raceStore.getHorses);
 		background-size: contain;
 		background-repeat: repeat;
 		padding: 24px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
 	}
 
 	&__content {

@@ -65,6 +65,17 @@ code {
 .text-light {
 	color: var(--color-white);
 }
+.timer {
+	font-size: 26px;
+	font-family: var(--font-secondary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&::before {
+		display: block;
+		content: "00:";
+	}
+}
 
 @keyframes gallop {
 	from {
