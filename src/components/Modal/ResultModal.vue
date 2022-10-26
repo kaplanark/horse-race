@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useRaceStore } from '@stores/use-race';
 
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 import ScoreTable from '@components/ScoreTable.vue';
 
 const emit = defineEmits(['start']);
@@ -29,8 +29,8 @@ const show = computed(() => raceStore.getRaceStatus === 'finished');
 			</div>
 			<div class="modal__content-footer">
 				<div class="btn-group">
-					<Button name="Close" variant="secondary" @click="closetHandler"></Button>
-					<Button name="Restart Race" variant="primary" @click="restartHandler"></Button>
+					<BaseButton name="Close" variant="secondary" @click="closetHandler"></BaseButton>
+					<BaseButton name="Restart Race" variant="primary" @click="restartHandler"></BaseButton>
 				</div>
 			</div>
 		</div>

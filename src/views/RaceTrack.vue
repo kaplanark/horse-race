@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRaceStore } from '@stores/use-race';
 
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 import ScoreList from '@components/ScoreList.vue';
 import Lane from '@components/Lane.vue';
 import Countdown from '@components/Countdown.vue';
@@ -64,7 +64,7 @@ const horses = computed(() => raceStore.getHorses);
 <template>
 	<div class="race-area">
 		<div class="race-area__header">
-			<Button name="☰" variant="secondary" @click="settingHandler"></Button>
+			<BaseButton name="☰" variant="secondary" @click="settingHandler"></BaseButton>
 			<Teleport to="body">
 				<SettingDrawer v-model:open="isSettingDrawer"></SettingDrawer>
 			</Teleport>
@@ -76,7 +76,7 @@ const horses = computed(() => raceStore.getHorses);
 			</template>
 		</div>
 		<div class="race-area__footer">
-			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler"></Button>
+			<BaseButton name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler"></BaseButton>
 			<ScoreList></ScoreList>
 			<Teleport to="body">
 				<Countdown></Countdown>
