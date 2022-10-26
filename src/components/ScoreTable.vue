@@ -6,8 +6,8 @@ import { useMainStore } from '@stores/use-main';
 const raceStore = useRaceStore();
 const mainStore = useMainStore();
 
-const horses = computed(() => raceStore.getHorseScoreRanking);
-const cardinalNumbers = computed(() => mainStore.getCardinalNumbers);
+const horses = computed(() => raceStore.getHorseScoreRanking); // getting the horse score ranking
+const cardinalNumbers = computed(() => mainStore.getCardinalNumbers); // getting the cardinal numbers from the main store
 </script>
 
 <template>

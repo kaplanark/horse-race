@@ -8,9 +8,9 @@ const props = defineProps({
 });
 
 const timer = computed(() => {
-	let minutes = Math.floor(props.time / 60000);
-	let seconds = ((props.time % 60000) / 1000).toFixed(0);
-	return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+	let minutes = Math.floor(props.time / 60000); // calculating the minutes
+	let seconds = ((props.time % 60000) / 1000).toFixed(0); // calculating the seconds
+	return minutes + ":" + (seconds < 10 ? '0' : '') + seconds; // return the time in the format of minutes:seconds
 });
 </script>
 
