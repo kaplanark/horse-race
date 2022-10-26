@@ -98,10 +98,16 @@ const horses = computed(() => raceStore.getHorses);
 		background-image: url('@assets/images/bg-mountain.webp');
 		background-size: contain;
 		background-repeat: repeat;
+		background-position: top center;
 		padding: 24px;
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
+
+		@media screen and (max-width: 900px) {
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 	}
 
 	&__content {

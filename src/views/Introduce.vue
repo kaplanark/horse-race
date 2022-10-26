@@ -52,8 +52,8 @@ onMounted(() => {
 	scroll-snap-type: y mandatory;
 	overflow-x: hidden;
 	background-color: var(--color-white);
-	background-image: linear-gradient(#f6f6f6 0.5px, transparent 0.5px), linear-gradient(to right, #f6f6f6 0.5px, #ffffff 0.5px);
-	background-size: 10px 10px;
+	background-image: linear-gradient(#f7f7f7 0.6000000000000001px, transparent 0.6000000000000001px), linear-gradient(to right, #f7f7f7 0.6000000000000001px, #ffffff 0.6000000000000001px);
+	background-size: 12px 12px;
 
 	&::-webkit-scrollbar {
 		width: 8px;

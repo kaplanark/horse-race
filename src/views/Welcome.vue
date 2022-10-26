@@ -76,5 +76,17 @@ const clickHandler = (route) => {
 			font-size: 12px;
 		}
 	}
+
+	@media screen and (max-width: 768px) {
+		background-repeat: no-repeat;
+
+		&__content {
+			justify-content: center;
+
+			h1 {
+				font-size: 64px;
+			}
+		}
+	}
 }
 </style>
