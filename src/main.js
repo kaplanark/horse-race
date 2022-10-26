@@ -6,7 +6,7 @@ import router from './router/index';
 
 
 const app = createApp(App);
-const pinia = createPinia()
+const pinia = createPinia();
 
 app.use(router);
 app.use(pinia);

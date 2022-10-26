@@ -71,6 +71,12 @@ const resetHandler = () => emits('reset');
 		opacity: 0.1;
 		animation: 3s linear infinite gallop;
 	}
+
+	@media screen and (max-width: 768px) {
+		&::before {
+			font-size: 80vh;
+		}
+	}
 }
 
 .marker {
