@@ -8,6 +8,7 @@ import Lane from '@components/Lane.vue';
 import Countdown from '@components/Countdown.vue';
 import ResultModal from '@components/Modal/ResultModal.vue';
 import SettingDrawer from '@components/SettingDrawer.vue';
+import Timer from '@components/Timer.vue';
 
 const raceStore = useRaceStore();
 
@@ -16,7 +17,6 @@ const raceTimer = ref(0);
 
 const startRaceFunction = () => {
 	raceStore.setRaceStatus('started');
-	raceTimer.value = 0;
 	const speedInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
 			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
@@ -29,7 +29,6 @@ const startRaceFunction = () => {
 			clearInterval(speedInterval)
 		};
 
-		raceTimer.value++;
 	}, 1000);
 
 	const travelledDistanceInterval = setInterval(() => {
@@ -42,6 +41,7 @@ const startRaceFunction = () => {
 				horse.run = false;
 			}
 		});
+		raceTimer.value += 100;
 		const allFinished = raceStore.getHorses.every(horse => horse.finish);
 		if (allFinished) clearInterval(travelledDistanceInterval);
 	}, 100);
@@ -49,6 +49,7 @@ const startRaceFunction = () => {
 
 const startHandler = () => {
 	raceStore.setCountdown(true);
+	raceTimer.value = 0;
 	const countdownTimer = setTimeout(() => {
 		startRaceFunction();
 		clearTimeout(countdownTimer);
@@ -67,7 +68,7 @@ const horses = computed(() => raceStore.getHorses);
 			<Teleport to="body">
 				<SettingDrawer v-model:hidden="isSettingDrawer"></SettingDrawer>
 			</Teleport>
-			<div class="timer">{{ raceTimer }}</div>
+			<Timer :time="raceTimer"></Timer>
 		</div>
 		<div class="race-area__content">
 			<template v-for="horse in horses" :key="horse.lane">
