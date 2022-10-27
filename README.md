@@ -32,14 +32,15 @@ npm run dev
 
 ## Used Technologies
 
--  HTML
--  CSS (SASS)
--  JavaScript
--  Vue.js
--  Pinia
--  Vite
--  Netlify
--  Vue Router
+-  [Vue.js](https://vuejs.org/)
+-  [Pinia](https://pinia.vuejs.org/)
+-  [Vite](https://vitejs.dev/)
+-  [Netlify](https://www.netlify.com/)
+-  [Vue Router](https://router.vuejs.org/)
+-  [Vitest](https://vitest.dev/)
+-  [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+-  [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+-  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## License
 
