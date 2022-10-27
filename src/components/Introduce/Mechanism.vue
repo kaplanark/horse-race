@@ -1,5 +1,5 @@
 <script setup>
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 import Marker from '@components/Marker.vue';
 const props = defineProps({
 	data: {
@@ -20,8 +20,8 @@ const resetHandler = () => emits('reset');
 		<Marker postion="left" text="Current speed" :count="props.data.speed + 'px/sec'"></Marker>
 		<Marker postion="right" text="Elapsed time" :count="props.data.scoreTime + 'sec'"></Marker>
 		<div class="btn-group">
-			<Button name="Trigger" variant="primary" @click="triggerHandler"></Button>
-			<Button name="Reset" variant="secondary" @click="resetHandler"></Button>
+			<BaseButton name="Trigger" variant="primary" @click="triggerHandler"></BaseButton>
+			<BaseButton name="Reset" variant="secondary" @click="resetHandler"></BaseButton>
 		</div>
 		<code>
 			{

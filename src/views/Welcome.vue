@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 import Loader from '@components/Loader/Loader.vue';
 
 const router = useRouter();
@@ -10,7 +10,7 @@ const isLoaderStatus = ref(false);
 
 const clickHandler = (route) => {
 	isLoaderStatus.value ? isLoaderStatus.value = false : isLoaderStatus.value = true;
-	const loaderTimer = setTimeout(() => {
+	const loaderTimer = setTimeout(() => { // set a timeout for the loader
 		isLoaderStatus.value = false;
 		router.push(route);
 		clearTimeout(loaderTimer);
@@ -25,8 +25,8 @@ const clickHandler = (route) => {
 			<Loader :status="isLoaderStatus"></Loader>
 			<h1>Horse Race</h1>
 			<div class="btn-group">
-				<Button name="Get Started" variant="primary" @click="clickHandler('/race-track')"></Button>
-				<Button name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></Button>
+				<BaseButton name="Get Started" variant="primary" @click="clickHandler('/race-track')"></BaseButton>
+				<BaseButton name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></BaseButton>
 			</div>
 		</div>
 		<div class="welcome__footer">

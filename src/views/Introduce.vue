@@ -40,7 +40,7 @@ onMounted(() => {
 <template>
 	<div class="sections">
 		<Mechanism :data="data" @trigger="triggerHandler" @reset="resetHandler"></Mechanism>
-		<Information :data="data"></Information>
+		<Information></Information>
 	</div>
 </template>
 

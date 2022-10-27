@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRaceStore } from '@stores/use-race';
 
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 import ScoreList from '@components/ScoreList.vue';
 import Lane from '@components/Lane.vue';
 import Countdown from '@components/Countdown.vue';
@@ -19,52 +19,52 @@ const startRaceFunction = () => {
 	raceStore.setRaceStatus('started');
 	const speedInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
-			horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
+			horse.speed = Math.floor(Math.random() * (40 - 20) + 20); // the speeds of the horses are randomly assigned
 			if (!horse.finish) horse.run = true;
 		});
-		const allFinished = raceStore.getHorses.every(horse => horse.finish);
 
-		if (allFinished) {
-			raceStore.setRaceStatus('finished');
-			clearInterval(speedInterval)
+		const allFinished = raceStore.getHorses.every(horse => horse.finish); // check if all horses are finished
+		if (allFinished) { // if all horses finished
+			raceStore.setRaceStatus('finished'); // setting race status to finished
+			clearInterval(speedInterval) // clearing the interval
 		};
-
 	}, 1000);
 
 	const travelledDistanceInterval = setInterval(() => {
 		raceStore.getHorses.map(horse => {
-			if (horse.travelledDistance < raceStore.getLaneLength) {
-				horse.scoreTime++;
-				horse.travelledDistance += horse.speed / 4;
-			} else {
+			if (horse.travelledDistance < raceStore.getLaneLength) { // if the travelled distance is less than the lane length
+				horse.scoreTime++; // increase the score time
+				horse.travelledDistance += horse.speed / 4; // add one-fourth of the speed to the path traveled
+			} else { // if the travelled distance is more than the lane length, set the finish to true
 				horse.finish = true;
 				horse.run = false;
 			}
 		});
 		raceTimer.value += 100;
-		const allFinished = raceStore.getHorses.every(horse => horse.finish);
-		if (allFinished) clearInterval(travelledDistanceInterval);
+
+		const allFinished = raceStore.getHorses.every(horse => horse.finish); // check if all horses are finished
+		if (allFinished) clearInterval(travelledDistanceInterval); // if all horses finished, clear the interval
 	}, 100);
 };
 
 const startHandler = () => {
 	raceStore.setCountdown(true);
 	raceTimer.value = 0;
-	const countdownTimer = setTimeout(() => {
+	const countdownTimer = setTimeout(() => { // set a timeout for the countdown
 		startRaceFunction();
 		clearTimeout(countdownTimer);
 	}, 3000);
 }
 const settingHandler = () => isSettingDrawer.value = true;
 
-const isDisabled = computed(() => raceStore.getRaceStatus === 'started');
+const isDisabled = computed(() => raceStore.getRaceStatus === 'started'); // if race status is started, disable the start button
 const horses = computed(() => raceStore.getHorses);
 </script>
 
 <template>
 	<div class="race-area">
 		<div class="race-area__header">
-			<Button name="☰" variant="secondary" @click="settingHandler"></Button>
+			<BaseButton name="☰" variant="secondary" @click="settingHandler"></BaseButton>
 			<Teleport to="body">
 				<SettingDrawer v-model:open="isSettingDrawer"></SettingDrawer>
 			</Teleport>
@@ -76,7 +76,7 @@ const horses = computed(() => raceStore.getHorses);
 			</template>
 		</div>
 		<div class="race-area__footer">
-			<Button name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler"></Button>
+			<BaseButton name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler"></BaseButton>
 			<ScoreList></ScoreList>
 			<Teleport to="body">
 				<Countdown></Countdown>

@@ -9,10 +9,10 @@ const raceStore = useRaceStore();
 const mainStore = useMainStore();
 
 onBeforeMount(() => {
-	raceStore.setLaneLength(screenWidth);
-	const numberOfHorses = raceStore.getHorses.length;
-	const cardinalNumbers = calcCardinalNums(numberOfHorses);
-	mainStore.setCardinalNumbers(cardinalNumbers);
+	raceStore.setLaneLength(screenWidth); // calculating the width of the screen for lane length
+	const numberOfHorses = raceStore.getHorses.length; // getting the number of horses
+	const cardinalNumbers = calcCardinalNums(numberOfHorses); // calculating the cardinal numbers
+	mainStore.setCardinalNumbers(cardinalNumbers); // set the cardinal numbers to the main store
 });
 </script>
 
