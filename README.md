@@ -54,7 +54,7 @@ npm run dev
 
 # Components
 
-## Button component props
+### Button component props
 
 |   Name   |   Type    |   Default   |                                        Description                                        |
 | :------: | :-------: | :---------: | :---------------------------------------------------------------------------------------: |
@@ -62,20 +62,20 @@ npm run dev
 | variant  | `String`  | _'primary'_ |   <sub style="color: #999">It takes values ​​such as primary, secondary, ternary.</sub>   |
 | disabled | `Boolean` |   _false_   |           <sub style="color: #999">It takes values ​​such as true, false.</sub>           |
 
-## Loader component props
+### Loader component props
 
 |  Name  |   Type    | Default |                            Description                            |
 | :----: | :-------: | :-----: | :---------------------------------------------------------------: |
 | status | `Boolean` | _false_ | <sub style="color: #999">It takes the status of the loader.</sub> |
 
-## Lane component props
+### Lane component props
 
 |  Name   |   Type   | Default |                        Description                        |
 | :-----: | :------: | :-----: | :-------------------------------------------------------: |
 |  horse  | `Object` |  _{}_   | <sub style="color: #999">It takes the horse object.</sub> |
 | lane-no | `Number` |   _0_   | <sub style="color: #999">It takes the lane number.</sub>  |
 
-## Marker component props
+### Marker component props
 
 |   Name   |   Type   | Default |                             Description                             |
 | :------: | :------: | :-----: | :-----------------------------------------------------------------: |
@@ -83,13 +83,13 @@ npm run dev
 |   text   | `String` |  _''_   |   <sub style="color: #999">It takes the text of the marker.</sub>   |
 |  count   | `Number` |  _''_   |  <sub style="color: #999">It takes the count of the marker.</sub>   |
 
-## Timer component props
+### Timer component props
 
 | Name |   Type   | Default |                          Description                           |
 | :--: | :------: | :-----: | :------------------------------------------------------------: |
 | time | `Number` |   _0_   | <sub style="color: #999">It takes the time of the timer.</sub> |
 
-## SettingsDraver component props
+### SettingsDraver component props
 
 | Name |   Type    | Default |                                Description                                 |
 | :--: | :-------: | :-----: | :------------------------------------------------------------------------: |
@@ -99,7 +99,7 @@ npm run dev
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.Please make sure to update tests as appropriate. Issues are also welcome for any questions or suggestions.
 
-Some great plugins to use to improve:
+Some great plugins to use to improve your development experience:
 
 -  [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) - Vue 3 IntelliSense
 -  [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Integrates ESLint JavaScript into VS Code.
