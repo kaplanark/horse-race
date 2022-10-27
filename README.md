@@ -2,11 +2,17 @@
 
 # Horse Race (protein Frontend Bootcamp Final Case)
 
-Horse racing is a competition simulation in which eight horses compete against each other. The horses are given a random speed and a constant distance to travel. The horse with the highest speed win.
+## Description
+
+Real-time race of horses running in 8 different lanes on a straight route. After pressing the start button, the countdown is shown and then the horses start from the starting point to the race. During the run, the speeds within a certain range (eg: min 20 km/h, max 40 km/h) are instantaneously changes randomly. The horse with the highest speed win.
 
 to experience <a href="https://horseracing.netlify.app/">DEMO</a>
 
-or run the following command in your terminal:
+## Installation
+
+It is a free and open source project. You can download the project from the link below and use it by downloading it to your computer. You can use it for your personal and commercial projects.
+
+Run the following command in your terminal:
 
 ```bash
 git clone https://github.com/kaplanark/horse-race.git
@@ -23,6 +29,21 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Used Technologies
+
+-  HTML
+-  CSS (SASS)
+-  JavaScript
+-  Vue.js
+-  Pinia
+-  Vite
+-  Netlify
+-  Vue Router
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 # Project Views
 
