@@ -52,6 +52,13 @@ npm run dev
 
 <img src="./screenshots/welcome.png"/>
 
+## Project Details
+
+-  _Welcome page :_ The welcome page is the first page that the user sees when the project is opened.
+-  _Introduce page:_ The introduction page is the page where the user is informed about the project.
+-  _Race track page:_ It is the focus page of the project. Functionally, it is the page where the race is shown and controlled.
+-  _Page not found:_ It is the page that the user sees when the page they want to access does not exist.
+
 # Components
 
 ### Button component props
