@@ -50,14 +50,29 @@ npm run dev
 
 # Project Views
 
-<img src="./screenshots/welcome.png"/>
+<img src="./screenshots/welcome.webp"/>
+
+<details>
+<summary>Introduce page</summary>
+<img src="./screenshots/introduce.webp"/>
+</details>
+<details>
+
+<summary>Race track page</summary>
+<img src="./screenshots/race-track.webp"/>
+</details>
+
+<details>
+<summary>Not found page</summary>
+<img src="./screenshots/not-found.webp"/>
+</details>
 
 ## Project Details
 
 -  _Welcome page :_ The welcome page is the first page that the user sees when the project is opened.
 -  _Introduce page:_ The introduction page is the page where the user is informed about the project.
 -  _Race track page:_ It is the focus page of the project. Functionally, it is the page where the race is shown and controlled.
--  _Page not found:_ It is the page that the user sees when the page they want to access does not exist.
+-  _Not found page:_ It is the page that the user sees when the page they want to access does not exist.
 
 # Components
 
