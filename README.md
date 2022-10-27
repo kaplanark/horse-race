@@ -4,6 +4,8 @@
 
 ## Description
 
+<blockquote>This project is a protein & path.dev final case project.</blockquote>
+
 Real-time race of horses running in 8 different lanes on a straight route. After pressing the start button, the countdown is shown and then the horses start from the starting point to the race. During the run, the speeds within a certain range (eg: min 20 km/h, max 40 km/h) are instantaneously changes randomly. The horse with the highest speed win.
 
 to experience <a href="https://horseracing.netlify.app/">DEMO</a>
@@ -44,7 +46,7 @@ npm run dev
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/) This project is licensed under the MIT License - see the LICENSE.md file for details or click the link.
 
 # Project Views
 
@@ -92,3 +94,7 @@ npm run dev
 | Name |   Type    | Default |                                Description                                 |
 | :--: | :-------: | :-----: | :------------------------------------------------------------------------: |
 | open | `Boolean` |   _0_   | <sub style="color: #999">It takes the status of the settings drawer.</sub> |
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.Please make sure to update tests as appropriate. Issues are also welcome for any questions or suggestions.
