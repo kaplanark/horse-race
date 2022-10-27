@@ -50,16 +50,21 @@ npm run dev
 
 # Project Views
 
+<img src="./screenshots/responsive.png"/>
+
+<details>
+<summary>Welcome page</summary>
 <img src="./screenshots/welcome.webp"/>
+</details>
+
+<details>
+<summary>Race track page</summary>
+<img src="./screenshots/race-track.webp"/>
+</details>
 
 <details>
 <summary>Introduce page</summary>
 <img src="./screenshots/introduce.webp"/>
-</details>
-<details>
-
-<summary>Race track page</summary>
-<img src="./screenshots/race-track.webp"/>
 </details>
 
 <details>
