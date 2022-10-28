@@ -13,8 +13,9 @@ const props = defineProps({
 
 <template>
 	<div class="lane" :data-lane="props.laneNo">
-		<div class="horse" :class="{'running':props.horse.run}"
-			:style="{ '--color-horse': props.horse.color, 'margin-left': props.horse.travelledDistance + 'px' }"></div>
+		<div class="horse" :class="{ 'running': props.horse.run }"
+			:style="{ '--color-horse': props.horse.color, 'margin-left': props.horse.travelledDistance + 'px' }">
+		</div>
 	</div>
 </template>
 

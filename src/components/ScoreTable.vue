@@ -13,10 +13,10 @@ const cardinalNumbers = computed(() => mainStore.getCardinalNumbers); // getting
 <template>
 	<div class="table">
 		<div class="table__header">
-			<div class="col">Lane No</div>
-			<div class="col">Name</div>
-			<div class="col">Last Speed</div>
-			<div class="col">Finishing Time</div>
+			<div class="col">{{ $t('lane_no') }}</div>
+			<div class="col">{{ $t('name') }}</div>
+			<div class="col">{{ $t('last_speed') }}</div>
+			<div class="col">{{ $t('finishing_time') }}</div>
 		</div>
 		<div class="table__aside">
 			<div class="row" v-for="cardinalNumber in cardinalNumbers" :key="cardinalNumber">{{ cardinalNumber }}</div>
@@ -25,7 +25,7 @@ const cardinalNumbers = computed(() => mainStore.getCardinalNumbers); // getting
 			<div class="row" v-for="horse in horses">
 				<span class="col">{{ horse.lane }}</span>
 				<span class="col" :style="{ color: horse.color }">{{ horse.name }}</span>
-				<span class="col">{{ horse.speed }} km/s</span>
+				<span class="col">{{ horse.speed }} km/sec</span>
 				<span class="col">{{ horse.scoreTime }} sec</span>
 			</div>
 		</div>

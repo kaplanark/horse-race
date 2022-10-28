@@ -1,4 +1,6 @@
 <script setup>
+import LanguageSwitcher from '@components/LanguageSwitcher.vue';
+
 const props = defineProps({
 	open: {
 		type: Boolean,
@@ -20,7 +22,7 @@ const closeHandler = () => emit('update:open', false);
 
 			</div>
 			<div class="drawer__content-footer">
-
+				<LanguageSwitcher></LanguageSwitcher>
 			</div>
 		</div>
 	</div>
@@ -51,8 +53,18 @@ const closeHandler = () => emit('update:open', false);
 		right: 0;
 		width: 100%;
 		height: 100%;
-		max-height: 400px;
+		max-height: 200px;
 		background-color: var(--color-white);
+		display: flex;
+		flex-direction: column;
+
+		&-body {
+			flex: 1;
+		}
+
+		&-footer {
+			padding: 16px;
+		}
 	}
 }
 </style>

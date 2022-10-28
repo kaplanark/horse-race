@@ -23,14 +23,14 @@ const show = computed(() => raceStore.getRaceStatus === 'finished');
 	<div class="modal" v-if="show">
 		<div class="modal__overlay"></div>
 		<div class="modal__content">
-			<div class="modal__content-header">Race Results</div>
+			<div class="modal__content-header">{{ $t('race_results') }}</div>
 			<div class="modal__content-body">
 				<ScoreTable></ScoreTable>
 			</div>
 			<div class="modal__content-footer">
 				<div class="btn-group">
-					<BaseButton name="Close" variant="secondary" @click="closetHandler"></BaseButton>
-					<BaseButton name="Restart Race" variant="primary" @click="restartHandler"></BaseButton>
+					<BaseButton :name="$t('close')" variant="secondary" @click="closetHandler"></BaseButton>
+					<BaseButton :name="$t('restart_race')" variant="primary" @click="restartHandler"></BaseButton>
 				</div>
 			</div>
 		</div>

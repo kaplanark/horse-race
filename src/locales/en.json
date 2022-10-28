@@ -1,0 +1,29 @@
+{
+	"info": {
+		"name": "English",
+		"code": "en"
+	},
+	"get_started": "Get Started",
+	"introduce": "Introduce",
+	"race_results": "Race Results",
+	"start_race": "Start Race",
+	"restart_race": "Restart Race",
+	"close": "Close",
+
+	"lane_no": "Lane No",
+	"name": "Name",
+	"last_speed": "Last Speed",
+	"finishing_time": "Finishing Time",
+
+	"404": {
+		"title": "Page Not Found",
+		"text": "TThe page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+		"button": "Go to welcome page"
+	},
+
+	"trawelled_distance": "Trawelled distance",
+	"current_speed": "Current speed",
+	"ellopsing_time": "Elapsing time",
+	"trigger": "Trigger",
+	"reset": "Reset"
+}
