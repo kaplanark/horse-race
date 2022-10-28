@@ -1,18 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import i18n from '@locales';
 
 import BaseButton from '@components/Button/BaseButton.vue';
 import Loader from '@components/Loader/Loader.vue';
+import LanguageSwitcher from '@components/LanguageSwitcher.vue';
 
 const router = useRouter();
 const isLoaderStatus = ref(false);
+const locale = computed(() => i18n.global.locale.value);
 
 const clickHandler = (route) => {
 	isLoaderStatus.value ? isLoaderStatus.value = false : isLoaderStatus.value = true;
 	const loaderTimer = setTimeout(() => { // set a timeout for the loader
 		isLoaderStatus.value = false;
-		router.push(route);
+		router.push(locale.value + route);
 		clearTimeout(loaderTimer);
 	}, 2000);
 	return;
@@ -25,11 +28,12 @@ const clickHandler = (route) => {
 			<Loader :status="isLoaderStatus"></Loader>
 			<h1>Horse Race</h1>
 			<div class="btn-group">
-				<BaseButton name="Get Started" variant="primary" @click="clickHandler('/race-track')"></BaseButton>
-				<BaseButton name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></BaseButton>
+				<BaseButton :name="$t('get_started')" variant="primary" @click="clickHandler('/race-track')"></BaseButton>
+				<BaseButton :name="$t('introduce')" variant="secondary" @click="clickHandler('/introduce')"></BaseButton>
 			</div>
 		</div>
 		<div class="welcome__footer">
+			<LanguageSwitcher></LanguageSwitcher>
 			<a href="https://github.com/kaplanark" target="_blank">github/kaplanark</a>
 		</div>
 	</div>
@@ -67,8 +71,10 @@ const clickHandler = (route) => {
 	&__footer {
 		padding: 64px 0;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		gap: 16px;
 
 		a {
 			color: var(--color-primary);

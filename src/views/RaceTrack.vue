@@ -76,7 +76,8 @@ const horses = computed(() => raceStore.getHorses);
 			</template>
 		</div>
 		<div class="race-area__footer">
-			<BaseButton name="Start Race" variant="primary" :disabled="isDisabled" @click="startHandler"></BaseButton>
+			<BaseButton :name="$t('start_race')" variant="primary" :disabled="isDisabled" @click="startHandler">
+			</BaseButton>
 			<ScoreList></ScoreList>
 			<Teleport to="body">
 				<Countdown></Countdown>

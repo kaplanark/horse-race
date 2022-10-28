@@ -1,0 +1,29 @@
+{
+	"info": {
+		"name": "Turkish",
+		"code": "tr"
+	},
+	"get_started": "Başlamak İçin",
+	"introduce": "Tanıtım",
+	"race_results": "Yarış Sonuçları",
+	"start_race": "Yarışa Başla",
+	"restart_race": "Yarışı Yeniden Başlat",
+	"close": "Kapat",
+
+	"lane_no": "Kulvar No",
+	"name": "İsim",
+	"last_speed": "Son Hız",
+	"finishing_time": "Bitiş Zamanı",
+
+	"404": {
+		"title": "Sayfa Bulunamadı",
+		"text": "Aradığınız sayfa kaldırılmış, adı değiştirilmiş veya geçici olarak kullanılamıyor olabilir.",
+		"button": "Karşılama sayfasına git"
+	},
+
+	"trawelled_distance": "Alınan yol",
+	"current_speed": "Son hız",
+	"ellopsing_time": "Geçen zaman",
+	"trigger": "Tetikleyici",
+	"reset": "Sıfırla"
+}
