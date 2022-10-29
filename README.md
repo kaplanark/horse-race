@@ -153,6 +153,20 @@ npm run dev
 | :------: | :------: | :---------: | :----------------------------------------------------------------: |
 | position | `String` | _top-right_ | <sub style="color: #999">It takes the position of the alert.</sub> |
 
+<blockquote>
+  <p>Alert Provider component must be used in the root of the project and it must be used only once.</p>
+  <p>
+  The incoming data is as follows: <br/>
+  <code>
+  {
+	 variant: 'success',
+	 message: 'This is a success alert',
+	 index: 1
+  }
+  </code>
+  </p>
+</blockquote>
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.Please make sure to update tests as appropriate. Issues are also welcome for any questions or suggestions.
