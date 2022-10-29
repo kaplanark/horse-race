@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { onBeforeRouteLeave } from 'vue-router';
 import { useRaceStore } from '@stores/use-race';
 
 import BaseButton from '@components/Button/BaseButton.vue';
@@ -59,6 +60,16 @@ const settingHandler = () => isSettingDrawer.value = true;
 
 const isDisabled = computed(() => raceStore.getRaceStatus === 'started'); // if race status is started, disable the start button
 const horses = computed(() => raceStore.getHorses);
+
+onBeforeRouteLeave((to, from) => {
+	const isRaceStillOne = raceStore.getRaceStatus === 'started';
+	if (isRaceStillOne) {
+		const answer = window.confirm(
+			'The race is in progress are you sure you want to exit?'
+		)
+		if (!answer) return false
+	}
+});
 </script>
 
 <template>
