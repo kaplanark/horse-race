@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`Select.vue > is correctly rendered 1`] = `
+"<div class=\\"select\\" id=\\"\\">
+  <div class=\\"select__input\\"><span class=\\"select__input-text\\">option1</span><svg class=\\"select__input-icon\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\">
+      <path d=\\"M7 10l5 5 5-5z\\"></path>
+    </svg></div>
+  <!--v-if-->
+</div>"
+`;
