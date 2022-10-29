@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useRaceStore } from '@stores/use-race';
+import { useMainStore } from '@stores/use-main';
 
 import LanguageSwitcher from '@components/LanguageSwitcher.vue';
 import BaseButton from '@components/Button/BaseButton.vue';
@@ -16,6 +17,7 @@ const props = defineProps({
 const emit = defineEmits(['update:open']);
 
 const raceStore = useRaceStore();
+const mainStore = useMainStore();
 
 const horseNames = computed(() => {
 	return raceStore.getHorses.map((horse) => horse.name);
@@ -27,8 +29,10 @@ const updateHandler = () => {
 	if (selectHorse.value && selectColor.value) {
 		raceStore.updateHorse({ name: selectHorse.value, color: selectColor.value });
 		emit('update:open', false);
+		mainStore.addAlert({ variant: 'success', message: 'Horse updated successfully' });
 		return;
 	}
+	mainStore.addAlert({ variant: 'error', message: 'Please select a horse and a color' });
 };
 const closeHandler = () => emit('update:open', false);
 </script>
