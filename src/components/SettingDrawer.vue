@@ -27,6 +27,7 @@ const updateHandler = () => {
 	if (selectHorse.value && selectColor.value) {
 		raceStore.updateHorse({ name: selectHorse.value, color: selectColor.value });
 		emit('update:open', false);
+		return;
 	}
 };
 const closeHandler = () => emit('update:open', false);
@@ -52,8 +53,8 @@ const closeHandler = () => emit('update:open', false);
 			</div>
 			<div class="drawer__content-footer">
 				<div class="btn-group">
-					<BaseButton :name="$t('close')" @click="closeHandler"></BaseButton>
-					<BaseButton :name="$t('update')" @click="updateHandler"></BaseButton>
+					<BaseButton :name="$t('close')" variant="secondary" @click="closeHandler"></BaseButton>
+					<BaseButton :name="$t('update')" variant="primary" @click="updateHandler"></BaseButton>
 				</div>
 				<div class="btn-group">
 					<label class="font-size-sm text-solid">{{ $t('labels.lang') }}</label>
