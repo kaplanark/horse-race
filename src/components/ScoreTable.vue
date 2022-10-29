@@ -38,6 +38,8 @@ const cardinalNumbers = computed(() => mainStore.getCardinalNumbers); // getting
 	grid-template-areas: 'x header header header header header header'
 		'aside content content content content content content';
 	gap: 8px;
+	width: 100%;
+	min-width: max-content;
 
 	&__header {
 		grid-area: header;
@@ -70,6 +72,7 @@ const cardinalNumbers = computed(() => mainStore.getCardinalNumbers); // getting
 			text-align: center;
 			font-size: 14px;
 			position: relative;
+			padding: 0 8px;
 
 			&:before {
 				position: absolute;
