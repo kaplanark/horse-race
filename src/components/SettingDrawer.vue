@@ -1,5 +1,6 @@
 <script setup>
 import LanguageSwitcher from '@components/LanguageSwitcher.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 
 const props = defineProps({
 	open: {
@@ -22,7 +23,11 @@ const closeHandler = () => emit('update:open', false);
 
 			</div>
 			<div class="drawer__content-footer">
-				<LanguageSwitcher></LanguageSwitcher>
+				<BaseButton :name="$t('close')" @click="closeHandler"></BaseButton>
+				<div class="btn-group">
+					<label class="font-size-sm">{{ $t('swich_language') }}</label>
+					<LanguageSwitcher></LanguageSwitcher>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -64,6 +69,9 @@ const closeHandler = () => emit('update:open', false);
 
 		&-footer {
 			padding: 16px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 	}
 }

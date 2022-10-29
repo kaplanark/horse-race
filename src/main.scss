@@ -66,6 +66,10 @@ code {
 	color: var(--color-white);
 }
 
+.font-size-sm {
+	font-size: 12px;
+}
+
 @keyframes gallop {
 	from {
 		font-variation-settings: "TIME" 0;
