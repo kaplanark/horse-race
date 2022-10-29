@@ -6,8 +6,8 @@ import RaceTrack from '@views/RaceTrack.vue';
 import Introduce from '@views/Introduce.vue';
 import NotFound from '@views/NotFound.vue';
 
-const locale = i18n.global.locale.value;
-const locales = i18n.global.availableLocales;
+const locale = i18n.global.locale.value; // Get current locale
+const locales = i18n.global.availableLocales; // Get all available locales
 
 const routes = [
 	{
@@ -47,12 +47,12 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	const paramsLocale = to.params.locale;
-	if (!locales.includes(paramsLocale)) {
+	const paramsLocale = to.params.locale; // Get locale from params
+	if (!locales.includes(paramsLocale)) { // If locale is not in the locales, redirect to /en or /tr
 		return next('/' + locale);
 	}
-	if (i18n.global.locale.value !== paramsLocale) {
-		i18n.global.locale.value = paramsLocale;
+	if (i18n.global.locale.value !== paramsLocale) { // If locale is not equal to current locale, change locale
+		i18n.global.locale.value = paramsLocale; // Change locale
 	}
 	return next();
 });
