@@ -9,8 +9,8 @@ const props = defineProps({
 		default: '',
 	},
 	index: {
-		type: String,
-		default: '',
+		type: Number,
+		default: null,
 	},
 })
 
