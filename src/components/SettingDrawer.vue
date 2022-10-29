@@ -1,6 +1,11 @@
 <script setup>
+import { ref, computed } from 'vue';
+import { useRaceStore } from '@stores/use-race';
+
 import LanguageSwitcher from '@components/LanguageSwitcher.vue';
 import BaseButton from '@components/Button/BaseButton.vue';
+import BaseSelect from '@components/Select/BaseSelect.vue';
+import ColorPicker from '@components/ColorPicker.vue';
 
 const props = defineProps({
 	open: {
@@ -10,6 +15,20 @@ const props = defineProps({
 });
 const emit = defineEmits(['update:open']);
 
+const raceStore = useRaceStore();
+
+const horseNames = computed(() => {
+	return raceStore.getHorses.map((horse) => horse.name);
+});
+const selectHorse = ref('');
+const selectColor = ref('');
+
+const updateHandler = () => {
+	if (selectHorse.value && selectColor.value) {
+		raceStore.updateHorse({ name: selectHorse.value, color: selectColor.value });
+		emit('update:open', false);
+	}
+};
 const closeHandler = () => emit('update:open', false);
 </script>
 
@@ -20,12 +39,24 @@ const closeHandler = () => emit('update:open', false);
 			<div class="drawer__content-header">
 			</div>
 			<div class="drawer__content-body">
-
+				<div class="input-group">
+					<label for="select_horse" class="font-size-sm text-solid">{{ $t('labels.name') }}</label>
+					<BaseSelect name="select_horse" :options="horseNames" v-model:value="selectHorse"
+						:placeholder="$t('select_horse')">
+					</BaseSelect>
+				</div>
+				<div class="input-group">
+					<label for="select_color" class="font-size-sm text-solid">{{ $t('labels.color') }}</label>
+					<ColorPicker name="select_color" v-model:value="selectColor"></ColorPicker>
+				</div>
 			</div>
 			<div class="drawer__content-footer">
-				<BaseButton :name="$t('close')" @click="closeHandler"></BaseButton>
 				<div class="btn-group">
-					<label class="font-size-sm">{{ $t('swich_language') }}</label>
+					<BaseButton :name="$t('close')" @click="closeHandler"></BaseButton>
+					<BaseButton :name="$t('update')" @click="updateHandler"></BaseButton>
+				</div>
+				<div class="btn-group">
+					<label class="font-size-sm text-solid">{{ $t('labels.lang') }}</label>
 					<LanguageSwitcher></LanguageSwitcher>
 				</div>
 			</div>
@@ -57,14 +88,20 @@ const closeHandler = () => emit('update:open', false);
 		left: 0;
 		right: 0;
 		width: 100%;
-		height: 100%;
-		max-height: 200px;
 		background-color: var(--color-white);
 		display: flex;
 		flex-direction: column;
 
 		&-body {
 			flex: 1;
+			padding: 16px;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 16px;
+
+			@media screen and (max-width: 768px) {
+				grid-template-columns: 1fr;
+			}
 		}
 
 		&-footer {

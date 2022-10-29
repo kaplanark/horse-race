@@ -9,7 +9,7 @@
 	"start_race": "Start Race",
 	"restart_race": "Restart Race",
 	"close": "Close",
-	"swich_language": "Swich language",
+	"select_horse": "Select horse",
 
 	"lane_no": "Lane No",
 	"name": "Name",
@@ -26,5 +26,12 @@
 	"current_speed": "Current speed",
 	"ellopsing_time": "Elapsing time",
 	"trigger": "Trigger",
-	"reset": "Reset"
+	"reset": "Reset",
+	"update": "Update",
+
+	"labels": {
+		"name": "Select the horse you want to update",
+		"color": "Select the color of the horse you want to update",
+		"lang": "Swich language"
+	}
 }

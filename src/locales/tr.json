@@ -9,7 +9,7 @@
 	"start_race": "Yarışa Başla",
 	"restart_race": "Yarışı Yeniden Başlat",
 	"close": "Kapat",
-	"swich_language": "Dili değiştir",
+	"select_horse": "At Seç",
 
 	"lane_no": "Kulvar No",
 	"name": "İsim",
@@ -26,5 +26,12 @@
 	"current_speed": "Son hız",
 	"ellopsing_time": "Geçen zaman",
 	"trigger": "Tetikleyici",
-	"reset": "Sıfırla"
+	"reset": "Sıfırla",
+	"update": "Güncelle",
+
+	"labels": {
+		"name": "Güncellemek istediğiniz atı seçin",
+		"color": "Güncellemek istediğiniz atın rengini seçin",
+		"lang": "Dili değiştir"
+	}
 }
