@@ -1,16 +1,15 @@
 import { describe, expect, test } from 'vitest';
 import { mount } from '@vue/test-utils';
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 
-describe('Button.vue', () => {
+describe('BaseButton.vue', () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = mount(Button, {
+		wrapper = mount(BaseButton, {
 			props: {
 				name: 'Button',
 				variant: 'primary',
-				disbaled: false,
-				color: 'white',
+				disbaled: false
 			}
 		});
 	});

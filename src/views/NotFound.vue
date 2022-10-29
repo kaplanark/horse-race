@@ -1,13 +1,12 @@
+<script setup></script>
 <template>
 	<div class="not-found">
 		<div class="not-found__content">
 			<div class="error">
 				<div class="error__title">404</div>
-				<div class="error__name">Page not found</div>
-				<div class="error__text">The page you are looking for might have been removed, had its name changed, or is
-					temporarily unavailable.
-				</div>
-				<router-link to="/" class="error__button">Go to welcome</router-link>
+				<div class="error__name">{{ $t('404.title') }}</div>
+				<div class="error__text">{{ $t('404.text') }}</div>
+				<router-link to="/" class="error__button">{{ $t('404.button') }}</router-link>
 			</div>
 		</div>
 	</div>

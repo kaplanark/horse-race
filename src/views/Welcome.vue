@@ -1,18 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import i18n from '@locales';
 
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 import Loader from '@components/Loader/Loader.vue';
+import LanguageSwitcher from '@components/LanguageSwitcher.vue';
 
 const router = useRouter();
 const isLoaderStatus = ref(false);
+const locale = computed(() => i18n.global.locale.value);
 
 const clickHandler = (route) => {
 	isLoaderStatus.value ? isLoaderStatus.value = false : isLoaderStatus.value = true;
-	const loaderTimer = setTimeout(() => {
+	const loaderTimer = setTimeout(() => { // set a timeout for the loader
 		isLoaderStatus.value = false;
-		router.push(route);
+		router.push(locale.value + route);
 		clearTimeout(loaderTimer);
 	}, 2000);
 	return;
@@ -25,11 +28,12 @@ const clickHandler = (route) => {
 			<Loader :status="isLoaderStatus"></Loader>
 			<h1>Horse Race</h1>
 			<div class="btn-group">
-				<Button name="Get Started" variant="primary" @click="clickHandler('/race-track')"></Button>
-				<Button name="Introduce" variant="secondary" @click="clickHandler('/introduce')"></Button>
+				<BaseButton :name="$t('get_started')" variant="primary" @click="clickHandler('/race-track')"></BaseButton>
+				<BaseButton :name="$t('introduce')" variant="secondary" @click="clickHandler('/introduce')"></BaseButton>
 			</div>
 		</div>
 		<div class="welcome__footer">
+			<LanguageSwitcher></LanguageSwitcher>
 			<a href="https://github.com/kaplanark" target="_blank">github/kaplanark</a>
 		</div>
 	</div>
@@ -67,13 +71,27 @@ const clickHandler = (route) => {
 	&__footer {
 		padding: 64px 0;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		gap: 16px;
 
 		a {
 			color: var(--color-primary);
 			text-decoration: none;
 			font-size: 12px;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		background-repeat: no-repeat;
+
+		&__content {
+			justify-content: center;
+
+			h1 {
+				font-size: 64px;
+			}
 		}
 	}
 }

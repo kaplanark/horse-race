@@ -6,11 +6,11 @@ const raceStore = useRaceStore();
 
 const countdown = ref(3);
 
-const hidden = computed(() => raceStore.getCountdown);
+const open = computed(() => raceStore.getCountdown);
 
-watch(hidden, (value) => {
+watch(open, (value) => { // wtach 'open' value and if it is true, start the countdown
 	if (value) {
-		const interval = setInterval(() => {
+		const interval = setInterval(() => { // set an interval for the countdown
 			countdown.value--;
 			if (countdown.value === -1) {
 				clearInterval(interval);
@@ -23,7 +23,7 @@ watch(hidden, (value) => {
 </script>
 
 <template>
-	<div class="countdown" v-if="hidden">
+	<div class="countdown" v-if="open">
 		<div class="countdown__overlay"></div>
 		<div class="countdown__content">
 			{{ countdown }}

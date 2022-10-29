@@ -1,17 +1,19 @@
 <script setup>
+import LanguageSwitcher from '@components/LanguageSwitcher.vue';
+
 const props = defineProps({
-	hidden: {
+	open: {
 		type: Boolean,
 		defult: false
 	}
 });
-const emit = defineEmits(['update:hidden']);
+const emit = defineEmits(['update:open']);
 
-const closeHandler = () => emit('update:hidden', false);
+const closeHandler = () => emit('update:open', false);
 </script>
 
 <template>
-	<div class="drawer" v-if="props.hidden">
+	<div class="drawer" v-if="props.open">
 		<div class="drawer__overlay" @click="closeHandler"></div>
 		<div class="drawer__content">
 			<div class="drawer__content-header">
@@ -20,7 +22,7 @@ const closeHandler = () => emit('update:hidden', false);
 
 			</div>
 			<div class="drawer__content-footer">
-
+				<LanguageSwitcher></LanguageSwitcher>
 			</div>
 		</div>
 	</div>
@@ -51,8 +53,18 @@ const closeHandler = () => emit('update:hidden', false);
 		right: 0;
 		width: 100%;
 		height: 100%;
-		max-height: 400px;
+		max-height: 200px;
 		background-color: var(--color-white);
+		display: flex;
+		flex-direction: column;
+
+		&-body {
+			flex: 1;
+		}
+
+		&-footer {
+			padding: 16px;
+		}
 	}
 }
 </style>

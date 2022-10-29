@@ -77,6 +77,16 @@ const props = defineProps({
 				transform: scaleX(1);
 			}
 		}
+
+		&:active,
+		&:focus {
+			color: var(--color-white);
+
+			&::before {
+				transform: scale(1);
+				background-color: var(--color-primary);
+			}
+		}
 	}
 
 	&--secondary {
@@ -110,6 +120,16 @@ const props = defineProps({
 			&::before {
 				transform-origin: center left;
 				transform: scaleX(1);
+			}
+		}
+
+		&:active,
+		&:focus {
+			color: var(--color-white);
+
+			&::before {
+				transform: scale(1);
+				background-color: var(--color-secondary);
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 <script setup>
-import Button from '@components/Button/Button.vue';
+import BaseButton from '@components/Button/BaseButton.vue';
 import Marker from '@components/Marker.vue';
 const props = defineProps({
 	data: {
@@ -16,12 +16,12 @@ const resetHandler = () => emits('reset');
 
 <template>
 	<section class="mechanism">
-		<Marker postion="left" text="Trawelled distance" :count="props.data.travelledDistance + 'px'"></Marker>
-		<Marker postion="left" text="Current speed" :count="props.data.speed + 'px/sec'"></Marker>
-		<Marker postion="right" text="Elapsed time" :count="props.data.scoreTime + 'sec'"></Marker>
+		<Marker postion="left" :text="$t('trawelled_distance')" :count="props.data.travelledDistance + 'px'"></Marker>
+		<Marker postion="left" :text="$t('current_speed')" :count="props.data.speed + 'px/sec'"></Marker>
+		<Marker postion="right" :text="$t('ellopsing_time')" :count="props.data.scoreTime + 'sec'"></Marker>
 		<div class="btn-group">
-			<Button name="Trigger" variant="primary" @click="triggerHandler"></Button>
-			<Button name="Reset" variant="secondary" @click="resetHandler"></Button>
+			<BaseButton :name="$t('trigger')" variant="primary" @click="triggerHandler"></BaseButton>
+			<BaseButton :name="$t('reset')" variant="secondary" @click="resetHandler"></BaseButton>
 		</div>
 		<code>
 			{
@@ -70,6 +70,18 @@ const resetHandler = () => emits('reset');
 		color: var(--color-tertiary);
 		opacity: 0.1;
 		animation: 3s linear infinite gallop;
+	}
+
+	@media screen and (max-width: 768px) {
+		&::before {
+			font-size: 80vh;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		&::before {
+			font-size: 50vh;
+		}
 	}
 }
 

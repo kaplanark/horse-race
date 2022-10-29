@@ -58,6 +58,14 @@ code {
 	font-weight: 600;
 }
 
+.text-dark {
+	color: var(--color-secondary);
+}
+
+.text-light {
+	color: var(--color-white);
+}
+
 @keyframes gallop {
 	from {
 		font-variation-settings: "TIME" 0;

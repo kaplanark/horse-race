@@ -1,3 +1,4 @@
+// Cardinal value is calculated according to the incoming number.
 function calcCardinalNumber(number) {
 	let j = number % 10, k = number % 100;
 	if (j == 1 && k != 11) {
@@ -11,7 +12,7 @@ function calcCardinalNumber(number) {
 	}
 	return number + "th";
 }
-
+// According to the incoming number, the sequence of cardinal numbers up to that value is calculated.
 export default function cardinalNumbers(param) {
 	const resoult = [];
 	for (let i = 0; i < param; i++) {
