@@ -82,7 +82,7 @@ npm run dev
 
 # Components
 
-### Button component props
+### BaseButton component props
 
 |   Name   |   Type    |   Default   |                                        Description                                        |
 | :------: | :-------: | :---------: | :---------------------------------------------------------------------------------------: |
@@ -122,6 +122,36 @@ npm run dev
 | Name |   Type    | Default |                                Description                                 |
 | :--: | :-------: | :-----: | :------------------------------------------------------------------------: |
 | open | `Boolean` |   _0_   | <sub style="color: #999">It takes the status of the settings drawer.</sub> |
+
+### ColorPicker component props
+
+| Name  |   Type   | Default |                                               Description                                                |
+| :---: | :------: | :-----: | :------------------------------------------------------------------------------------------------------: |
+| name  | `String` |  _''_   |                  <sub style="color: #999">It takes the name of the color picker.</sub>                   |
+| value | `String` |   _0_   | <sub style="color: #999">It takes the color of the color picker. Emited when the color is changed.</sub> |
+
+### BaseSelect component props
+
+|    Name     |   Type   | Default |                                          Description                                          |
+| :---------: | :------: | :-----: | :-------------------------------------------------------------------------------------------: |
+|    name     | `String` |  _''_   |             <sub style="color: #999">It takes the name of the color picker.</sub>             |
+|    value    | `String` |  _''_   | <sub style="color: #999">It takes the color of the color picker. Emited selected value.</sub> |
+|   options   | `Array`  |  _[]_   |              <sub style="color: #999">It takes the options of the select.</sub>               |
+| placeholder | `String` |  _''_   |            <sub style="color: #999">It takes the placeholder of the select.</sub>             |
+
+### Alert component props
+
+|  Name   |   Type   |  Default  |                               Description                                |
+| :-----: | :------: | :-------: | :----------------------------------------------------------------------: |
+| variant | `String` | _default_ |    <sub style="color: #999">It takes the variant of the alert.</sub>     |
+| message | `String` |   _''_    |    <sub style="color: #999">It takes the message of the alert.</sub>     |
+|  index  | `Number` |  _null_   | <sub style="color: #999">It takes the index of the alert. Required</sub> |
+
+### Alert Provider component props
+
+|   Name   |   Type   |   Default   |                            Description                             |
+| :------: | :------: | :---------: | :----------------------------------------------------------------: |
+| position | `String` | _top-right_ | <sub style="color: #999">It takes the position of the alert.</sub> |
 
 ## Contributing
 

@@ -4,6 +4,7 @@ import { useRaceStore } from '@stores/use-race';
 import { useMainStore } from '@stores/use-main';
 import screenWidth from '@utils/screenWidth';
 import calcCardinalNums from '@utils/calcCardinalNums';
+import AlertProvider from '@components/Alert/AlertProvider.vue';
 
 const raceStore = useRaceStore();
 const mainStore = useMainStore();
@@ -18,4 +19,7 @@ onBeforeMount(() => {
 
 <template>
 	<RouterView />
+	<Teleport to="body">
+		<AlertProvider position="bottom-right" />
+	</Teleport>
 </template>

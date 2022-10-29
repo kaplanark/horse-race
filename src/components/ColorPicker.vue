@@ -12,10 +12,12 @@ const props = defineProps({
 });
 const emit = defineEmits(['update:value']);
 
+const defaultColor = '#000000';
+
 const inputHandler = (e) => emit('update:value', e.target.value);
 
 const color = computed(() => {
-	return props.value || '#000000';
+	return props.value || defaultColor;
 });
 
 </script>
