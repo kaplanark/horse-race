@@ -54,25 +54,6 @@ onMounted(() => {
 	background-color: var(--color-white);
 	background-image: linear-gradient(#f7f7f7 0.6000000000000001px, transparent 0.6000000000000001px), linear-gradient(to right, #f7f7f7 0.6000000000000001px, #ffffff 0.6000000000000001px);
 	background-size: 12px 12px;
-
-	&::-webkit-scrollbar {
-		width: 8px;
-	}
-
-	&::-webkit-scrollbar-track {
-		border-radius: 5px;
-		margin: 0.2rem 0;
-		background: var(--color-white);
-	}
-
-	&::-webkit-scrollbar-thumb {
-		background: var(--color-secondary);
-		border-radius: 5px;
-	}
-
-	&::-webkit-scrollbar-thumb:hover {
-		background: var(--color-tertiary);
-	}
 }
 
 section {
