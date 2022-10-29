@@ -66,6 +66,9 @@ const show = computed(() => raceStore.getRaceStatus === 'finished');
 		max-width: 800px;
 		margin: 0 16px;
 		width: calc(100% - 32px);
+		max-height: 90vh;
+		display: flex;
+		flex-direction: column;
 
 		&-header {
 			padding: 16px;
@@ -76,6 +79,8 @@ const show = computed(() => raceStore.getRaceStatus === 'finished');
 
 		&-body {
 			padding: 16px;
+			flex: 1;
+			overflow: auto;
 		}
 
 		&-footer {
