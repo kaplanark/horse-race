@@ -40,6 +40,7 @@ npm run dev
 -  [Netlify](https://www.netlify.com/)
 -  [Vue Router](https://router.vuejs.org/)
 -  [Vitest](https://vitest.dev/)
+-  [Vue i18n](https://vue-i18n.intlify.dev/)
 -  [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 -  [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 -  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
