@@ -37,8 +37,8 @@ npm run dev
 The basic logic of the project is as follows:
 
 ```js
-const raceStatus = 'ready' // ready, started, finished
-const horses = [{ lane: 1, name: 'Tucker', travelledDistance: 0, speed: 0, finish: false, scoreTime: 0, color: '#3b302f', run: false },{...}...]
+let raceStatus = 'ready' // ready, started, finished
+let horses = [{ lane: 1, name: 'Tucker', travelledDistance: 0, speed: 0, finish: false, scoreTime: 0, color: '#3b302f', run: false },{...}...]
 ```
 
 ```js
