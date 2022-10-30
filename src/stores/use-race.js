@@ -103,11 +103,11 @@ export const useRaceStore = defineStore('race', {
 		setRaceStatus(status) {
 			this.raceStatus = status;
 		},
-		setCountdown(countdown) {
-			this.countdown = countdown;
+		setCountdown(value) {
+			this.countdown = value;
 		},
-		setLaneLength(laneLength) {
-			this.laneLength = laneLength;
+		setLaneLength(length) {
+			this.laneLength = length;
 		},
 		updateHorse({ name, color }) {
 			const horse = this.horses.find(horse => horse.name === name);
