@@ -10,7 +10,6 @@ const emit = defineEmits(['start']);
 const raceStore = useRaceStore();
 
 const closetHandler = () => raceStore.resetRace();
-
 const restartHandler = () => {
 	raceStore.resetRace();
 	emit('start');

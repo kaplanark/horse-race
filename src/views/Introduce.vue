@@ -23,7 +23,6 @@ const triggerHandler = () => {
 		data.run = false;
 	}
 }
-
 const resetHandler = () => {
 	data.travelledDistance = 0;
 	data.speed = 0;
