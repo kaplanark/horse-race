@@ -51,7 +51,7 @@ const speedInterval = setInterval(() => {
 
 	const allFinished = horses.every((horse) => horse.finish);
 	if (allFinished) {
-		race_status = "finished";
+		raceStatus = "finished";
 		clearInterval(speedInterval);
 	}
 }, 1000);
