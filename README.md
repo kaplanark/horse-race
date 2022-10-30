@@ -32,6 +32,59 @@ npm install
 npm run dev
 ```
 
+## Basic Logic
+
+The basic logic of the project is as follows:
+
+```js
+const raceStatus = 'ready' // ready, started, finished
+const horses = [{ lane: 1, name: 'Tucker', travelledDistance: 0, speed: 0, finish: false, scoreTime: 0, color: '#3b302f', run: false },{...}...]
+```
+
+```js
+raceStatus = "started";
+const speedInterval = setInterval(() => {
+	horses.map((horse) => {
+		horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
+		if (!horse.finish) horse.run = true;
+	});
+
+	const allFinished = horses.every((horse) => horse.finish);
+	if (allFinished) {
+		raceStatus = "finished";
+		clearInterval(speedInterval);
+	}
+}, 1000);
+```
+
+-  A random chance factor is assigned in the range of 40px/sec - 20px/sec and this is repeated every second until the total path is finished.
+-  Horse `run` property is used to determine whether the horse is running or not.
+-  It is repeated every second until all horses `finish` property is true.
+
+```js
+const travelledDistanceInterval = setInterval(() => {
+	horses.map((horse) => {
+		if (horse.travelledDistance < raceStore.getLaneLength) {
+			horse.scoreTime++;
+			horse.travelledDistance += horse.speed;
+		} else {
+			horse.finish = true;
+			horse.run = false;
+		}
+	});
+	const allFinished = horses.every((horse) => horse.finish);
+	if (allFinished) clearInterval(travelledDistanceInterval);
+}, 100);
+```
+
+-  Horse `travelledDistance` property is used to determine the distance travelled by the horse.
+-  Horse `scoreTime` property is used to determine the time spent by the horse.
+-  Horse `travelledDistance` property is increased by the horse's `speed` property every 100 milliseconds.
+-  İf the horse `travelledDistance` property is greater than the total path, the horse `finish` property is set to true.
+-  It is repeated every 100ms until all horses `finish` property is true.
+
+<p style="color:#fdd068"> This whole process is shown to the user with the margin-left style attribute for each horse. </p>
+
 ## Used Technologies
 
 -  [Vue.js](https://vuejs.org/)
