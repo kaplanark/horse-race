@@ -83,7 +83,7 @@ const travelledDistanceInterval = setInterval(() => {
 -  İf the horse `travelledDistance` property is greater than the total path, the horse `finish` property is set to true.
 -  It is repeated every 100ms until all horses `finish` property is true.
 
-<p style="color:#fdd068"> This whole process is shown to the user with the margin-left style attribute for each horse. </p>
+#### This whole process is shown to the user with the `margin-left` style attribute for each horse.
 
 # Project Views
 
