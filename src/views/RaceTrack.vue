@@ -63,6 +63,7 @@ const horses = computed(() => raceStore.getHorses);
 
 onBeforeRouteLeave(() => {
 	const isRaceStillOne = raceStore.getRaceStatus === 'started';
+	// İf race is still on, ask the user if he wants to leave the page
 	if (isRaceStillOne) {
 		const answer = window.confirm(
 			'The race is in progress are you sure you want to exit?'
