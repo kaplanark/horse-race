@@ -22,6 +22,7 @@ const mainStore = useMainStore();
 const horseNames = computed(() => {
 	return raceStore.getHorses.map((horse) => horse.name);
 });
+
 const selectHorse = ref('');
 const selectColor = ref('');
 

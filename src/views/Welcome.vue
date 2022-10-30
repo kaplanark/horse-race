@@ -8,7 +8,9 @@ import Loader from '@components/Loader/Loader.vue';
 import LanguageSwitcher from '@components/LanguageSwitcher.vue';
 
 const router = useRouter();
+
 const isLoaderStatus = ref(false);
+
 const locale = computed(() => i18n.global.locale.value);
 
 const clickHandler = (route) => {

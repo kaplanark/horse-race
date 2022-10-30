@@ -1,6 +1,7 @@
 <script setup>
 import BaseButton from '@components/Button/BaseButton.vue';
 import Marker from '@components/Marker.vue';
+
 const props = defineProps({
 	data: {
 		type: Object,
@@ -10,7 +11,6 @@ const props = defineProps({
 const emits = defineEmits(['trigger', 'reset']);
 
 const triggerHandler = () => emits('trigger');
-
 const resetHandler = () => emits('reset');
 </script>
 
