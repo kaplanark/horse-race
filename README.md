@@ -85,23 +85,6 @@ const travelledDistanceInterval = setInterval(() => {
 
 <p style="color:#fdd068"> This whole process is shown to the user with the margin-left style attribute for each horse. </p>
 
-## Used Technologies
-
--  [Vue.js](https://vuejs.org/)
--  [Pinia](https://pinia.vuejs.org/)
--  [Vite](https://vitejs.dev/)
--  [Netlify](https://www.netlify.com/)
--  [Vue Router](https://router.vuejs.org/)
--  [Vitest](https://vitest.dev/)
--  [Vue i18n](https://vue-i18n.intlify.dev/)
--  [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
--  [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
--  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/) This project is licensed under the MIT License - see the LICENSE.md file for details or click the link.
-
 # Project Views
 
 <img src="./screenshots/responsive.png"/>
@@ -219,6 +202,23 @@ const travelledDistanceInterval = setInterval(() => {
   </code>
   </p>
 </blockquote>
+
+## Used Technologies
+
+-  [Vue.js](https://vuejs.org/)
+-  [Pinia](https://pinia.vuejs.org/)
+-  [Vite](https://vitejs.dev/)
+-  [Netlify](https://www.netlify.com/)
+-  [Vue Router](https://router.vuejs.org/)
+-  [Vitest](https://vitest.dev/)
+-  [Vue i18n](https://vue-i18n.intlify.dev/)
+-  [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+-  [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+-  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/) This project is licensed under the MIT License - see the LICENSE.md file for details or click the link.
 
 ## Contributing
 
