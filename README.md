@@ -32,6 +32,56 @@ npm install
 npm run dev
 ```
 
+## Basic Logic
+
+The basic logic of the project is as follows:
+
+```js
+const raceStatus = 'ready' | 'started' | 'finished';
+const horses = [{ lane: 1, name: 'Tucker', travelledDistance: 0, speed: 0, finish: false, scoreTime: 0, color: '#3b302f', run: false },{...}...]
+```
+
+```js
+raceStatus = "started";
+const speedInterval = setInterval(() => {
+	horses.map((horse) => {
+		horse.speed = Math.floor(Math.random() * (40 - 20) + 20);
+		if (!horse.finish) horse.run = true;
+	});
+
+	const allFinished = horses.every((horse) => horse.finish);
+	if (allFinished) {
+		race_status = "finished";
+		clearInterval(speedInterval);
+	}
+}, 1000);
+```
+
+-  A random chance factor is assigned in the range of 40px/sec - 20px/sec and this is repeated every second until the total path is finished.
+-  Horse _run_ property is used to determine whether the horse is running or not.
+-  It is repeated every second until all horses _finish_ property is true.
+
+```js
+const travelledDistanceInterval = setInterval(() => {
+	horses.map((horse) => {
+		if (horse.travelledDistance < raceStore.getLaneLength) {
+			horse.scoreTime++;
+			horse.travelledDistance += horse.speed;
+		} else {
+			horse.finish = true;
+			horse.run = false;
+		}
+	});
+	const allFinished = horses.every((horse) => horse.finish);
+	if (allFinished) clearInterval(travelledDistanceInterval);
+}, 100);
+```
+
+-  Horse _travelledDistance_ property is used to determine the distance travelled by the horse.
+-  Horse _scoreTime_ property is used to determine the time spent by the horse.
+-  İf the horse _travelledDistance_ property is greater than the total path, the horse _finish_ property is set to true.
+-  It is repeated every 100ms until all horses _finish_ property is true.
+
 ## Used Technologies
 
 -  [Vue.js](https://vuejs.org/)
