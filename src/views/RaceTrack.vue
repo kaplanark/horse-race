@@ -61,13 +61,13 @@ const settingHandler = () => isSettingDrawer.value = true;
 const isDisabled = computed(() => raceStore.getRaceStatus === 'started'); // if race status is started, disable the start button
 const horses = computed(() => raceStore.getHorses);
 
-onBeforeRouteLeave((to, from) => {
+onBeforeRouteLeave(() => {
 	const isRaceStillOne = raceStore.getRaceStatus === 'started';
 	if (isRaceStillOne) {
 		const answer = window.confirm(
 			'The race is in progress are you sure you want to exit?'
 		)
-		if (!answer) return false
+		if (!answer) return false;
 	}
 });
 </script>
