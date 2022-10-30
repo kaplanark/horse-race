@@ -1,4 +1,4 @@
-<img src="./screenshots/23474.png">
+<img src="./screenshots/logo.webp">
 
 # Horse Race (protein Frontend Bootcamp Final Case)
 
