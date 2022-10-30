@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`ColorPicker.vue > is correctly rendered 1`] = `
+"<div class=\\"color-picker\\" id=\\"color\\"><label for=\\"color\\" class=\\"color-picker__wrapper\\"><input type=\\"color\\" class=\\"color-picker__input\\" name=\\"color\\" id=\\"color\\">
+    <div class=\\"color-picker__content\\">#000000</div>
+  </label></div>"
+`;

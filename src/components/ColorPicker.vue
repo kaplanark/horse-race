@@ -24,7 +24,7 @@ const color = computed(() => {
 
 <template>
 	<div class="color-picker" :id="props.name">
-		<label for="color" class="color-picker__wrapper" :style="{ '--color-select': props.value }">
+		<label for="color" class="color-picker__wrapper">
 			<input type="color" class="color-picker__input" name="color" id="color" :value="color" @input="inputHandler">
 			<div class="color-picker__content">{{ color }}</div>
 		</label>
